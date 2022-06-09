@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { GlobalStyle, theme } from 'theme';
-import { ScreenSizeLoader } from 'ui/layout/molecules';
+import { ScreenSizeLoader } from 'ui/layout';
 
 interface IProps {
   children: React.ReactNode;
