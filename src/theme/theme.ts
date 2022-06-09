@@ -11,6 +11,9 @@ export const theme: DefaultTheme = {
   fontFamily: {
     primary: '"Roboto", sans-serif',
   },
+  zIndex: {
+    heroImage: -1,
+  },
   color: {
     [Colors.BLACK]: '#212232',
     [Colors.WHITE]: '#fff',

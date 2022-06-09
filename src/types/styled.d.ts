@@ -7,6 +7,9 @@ declare module 'styled-components' {
     fontFamily: {
       primary: string;
     };
+    zIndex: {
+      heroImage: number;
+    };
     color: Record<Colors, string>;
     space: {
       1: string;

@@ -1,10 +1,14 @@
 import { Container } from 'ui/layout';
+import { StyledWrapper, StyledHeroImage } from './Homepage.styles';
 
 function Homepage(): JSX.Element {
   return (
-    <Container>
-      <p>Homepage</p>
-    </Container>
+    <StyledWrapper>
+      <StyledHeroImage />
+      <Container>
+        <p>eee</p>
+      </Container>
+    </StyledWrapper>
   );
 }
 
