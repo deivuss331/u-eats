@@ -1,5 +1,11 @@
+import { Container } from 'ui/layout';
+
 function Homepage(): JSX.Element {
-  return <p>Homepage</p>;
+  return (
+    <Container>
+      <p>Homepage</p>
+    </Container>
+  );
 }
 
 export default Homepage;

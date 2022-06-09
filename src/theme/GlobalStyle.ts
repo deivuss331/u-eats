@@ -7,6 +7,9 @@ export default createGlobalStyle<{ theme: DefaultTheme }>`
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    background-color: ${({ theme }) => theme.color.background};
+    color: ${({ theme }) => theme.color.black};
+    font-family: ${({ theme }) => theme.fontFamily.primary};
   } 
 
   * {

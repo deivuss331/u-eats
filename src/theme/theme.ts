@@ -1,15 +1,20 @@
 import { DefaultTheme } from 'styled-components';
 
-export enum ColorEnum {
+export enum Colors {
   BLACK = 'black',
+  WHITE = 'white',
+  BACKGROUND = 'background',
 }
 
 export const theme: DefaultTheme = {
+  containerSize: '1780px',
   fontFamily: {
     primary: '"Roboto", sans-serif',
   },
   color: {
-    [ColorEnum.BLACK]: '#212232',
+    [Colors.BLACK]: '#212232',
+    [Colors.WHITE]: '#fff',
+    [Colors.BACKGROUND]: '#f9f9f9',
   },
   space: {
     1: '5px',

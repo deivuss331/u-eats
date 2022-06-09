@@ -1,14 +1,13 @@
 import 'styled-components';
-import { ColorEnum } from 'theme';
+import { Colors } from 'theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    containerSize: string;
     fontFamily: {
       primary: string;
     };
-    color: {
-      [ColorEnum.BLACK]: string;
-    };
+    color: Record<Colors, string>;
     space: {
       1: string;
       2: string;
