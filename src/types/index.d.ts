@@ -29,6 +29,8 @@ export interface BrowseRestaurantsSearchParams extends ParsedBingLocation {
   query?: string;
 }
 
+export type DeliveryAddressFormPayload = ParsedBingLocation;
+
 /**
  * Api types
  */
@@ -45,11 +47,13 @@ export interface BingLocations {
         coordinates: [number, number];
       };
       address: {
+        addressLine?: string;
         adminDistrict?: string;
         adminDistrict2?: string;
         countryRegion?: string;
         formattedAddress?: string;
         locality?: string;
+        postalCode?: string;
       };
       confidence: BingConfidence;
     }[];
@@ -57,6 +61,16 @@ export interface BingLocations {
 }
 
 export interface ParsedBingLocation {
+  addressLine?: string;
   countryRegion?: string;
   locality?: string;
+  postalCode?: string;
 }
+
+export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
+
+/**
+ * Utils
+ */
+
+type RequiredExceptFor<T, TOptional extends keyof T> = Required<T> & Pick<T, TOptional>;

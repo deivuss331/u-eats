@@ -3,9 +3,11 @@ import { ThemeProvider } from 'styled-components';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider as StoreProvider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { GlobalStyle, theme, muiTheme } from 'theme';
 import { ScreenSizeLoader } from 'ui/layout';
+import store from 'store';
 import config from 'config';
 
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -27,22 +29,24 @@ function AppProviders({ children }: AppProvidersProps): JSX.Element {
           rel="stylesheet"
         />
       </Helmet>
-      <ThemeProvider theme={theme}>
-        <MuiThemeProvider theme={muiTheme}>
-          <QueryClientProvider client={queryClient}>
-            <GlobalStyle />
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                style: {
-                  borderRadius: theme.borderRadius.base,
-                },
-              }}
-            />
-            <Suspense fallback={<ScreenSizeLoader />}>{children}</Suspense>
-          </QueryClientProvider>
-        </MuiThemeProvider>
-      </ThemeProvider>
+      <StoreProvider store={store}>
+        <ThemeProvider theme={theme}>
+          <MuiThemeProvider theme={muiTheme}>
+            <QueryClientProvider client={queryClient}>
+              <GlobalStyle />
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  style: {
+                    borderRadius: theme.borderRadius.base,
+                  },
+                }}
+              />
+              <Suspense fallback={<ScreenSizeLoader />}>{children}</Suspense>
+            </QueryClientProvider>
+          </MuiThemeProvider>
+        </ThemeProvider>
+      </StoreProvider>
     </HelmetProvider>
   );
 }

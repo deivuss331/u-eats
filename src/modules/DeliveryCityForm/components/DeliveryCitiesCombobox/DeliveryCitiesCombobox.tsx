@@ -9,7 +9,7 @@ import { useGetSuggestedCitiesByQuery } from './hooks/api';
 const DELIVERY_CITY_MIN_LENGTH: number = 3 as const;
 
 function DeliveryCitiesCombobox(): JSX.Element {
-  const { inputRef, onInputFocus, isListVisible } = useSuggestedCitiesListController();
+  const { inputRef, wrapperRef, onInputFocus, isListVisible } = useSuggestedCitiesListController();
   const { control, watch } = useFormContext<FormPayload>();
   const { data, isLoading, isError } = useGetSuggestedCitiesByQuery(watch('query'));
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ function DeliveryCitiesCombobox(): JSX.Element {
   const hasVisibleList: boolean = isListVisible && !isError;
 
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={wrapperRef}>
       <Controller
         control={control}
         name="query"
