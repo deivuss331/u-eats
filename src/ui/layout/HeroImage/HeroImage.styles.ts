@@ -6,6 +6,14 @@ export const StyledWrapper = styled.div`
   height: 100%;
   max-height: 100vh;
   z-index: ${({ theme }) => theme.zIndex.heroImage};
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 100%);
+  }
 `;
 
 export const StyledImage = styled.img`
