@@ -11,6 +11,7 @@ declare module 'styled-components' {
       primary: string;
     };
     zIndex: {
+      header: number;
       heroImage: number;
     };
     color: Record<Colors, string>;

@@ -12,6 +12,9 @@ export const muiTheme = createTheme({
     primary: {
       main: theme.color.black,
     },
+    secondary: {
+      main: theme.color.accent,
+    },
     error: {
       main: theme.color.danger,
     },

@@ -1,4 +1,6 @@
-# U-Eats
+# 🍕 U-Eats
+
+App inspired by Uber Eats.
 
 ---
 
@@ -9,7 +11,11 @@
 ---
 
 ### Env variables:
+* `REACT_APP_VERSION` - app version
+* `REACT_APP_AUTHOR_NAME`
+* `REACT_APP_AUTHOR_EMAIL`
 * `REACT_APP_BING_MAPS_API_KEY` - get api key [here](https://www.bingmapsportal.com/)
+* `REACT_APP_PROJECT_REPO_URL` - git repository url
 
 ---
 
