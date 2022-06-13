@@ -22,7 +22,7 @@ export const theme: DefaultTheme = {
     heroImage: -1,
   },
   color: {
-    [Colors.BLACK]: '#03071e',
+    [Colors.BLACK]: '#090910',
     [Colors.WHITE]: '#fff',
     [Colors.BACKGROUND]: '#f9f9f9',
     [Colors.GREY_LIGHT]: '#f8f9fa',

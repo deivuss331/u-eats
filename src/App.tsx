@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AppProviders from 'providers/AppProviders';
-import { Header } from 'modules';
+import { Header, Footer } from 'modules';
 import { ScrollTopOnPathChange } from 'ui/helpers';
 import routes, { appPaths } from 'routes';
 
@@ -16,6 +16,7 @@ function App(): JSX.Element {
           ))}
           <Route path="*" element={<Navigate to={appPaths.root()} />} />
         </Routes>
+        <Footer />
       </Router>
     </AppProviders>
   );
