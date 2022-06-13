@@ -1,4 +1,4 @@
-import { Loader } from 'ui/layout/atoms';
+import Loader from '../Loader/Loader';
 import { Wrapper } from './ScreenSizeLoader.styles';
 
 function ScreenSizeLoader(): JSX.Element {

@@ -1,0 +1,44 @@
+name: 🚀 Test and deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📝 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: 📦 Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: 🧪 Run tests
+        run: npm run test
+
+  release:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📝 Checkout
+        uses: actions/checkout@v3
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+      - name: 📦 Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: 🏗 Build app
+        run: npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: build

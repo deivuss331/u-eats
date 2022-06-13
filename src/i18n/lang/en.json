@@ -1,5 +1,11 @@
 {
   "translation": {
-    "Loading": "Loading"
+    "Loading": "Loading",
+    "Delivery address": "Delivery address",
+    "Enter delivery address": "Enter delivery address",
+    "Search restaurants": "Search restaurants",
+    "Please type delivery address": "Please type delivery address",
+    "Suggested locations": "Suggested locations",
+    "Find your favorite restaurants nearby!": "Find your favorite restaurants nearby!"
   }
 }
