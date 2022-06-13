@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonIcon } from 'ui/form';
-import { Container } from 'ui/layout';
+import { Container, UEatsLogo } from 'ui/layout';
 
 export const StyledContainer = styled(Container)`
   position: fixed;
@@ -24,4 +24,8 @@ export const StyledButtonIcon = styled(ButtonIcon)`
   && {
     color: inherit;
   }
+`;
+
+export const StyledUEatsLogo = styled(UEatsLogo)`
+  margin-right: auto;
 `;

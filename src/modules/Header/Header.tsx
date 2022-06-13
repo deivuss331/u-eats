@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { UEatsLogo } from 'ui/layout';
+import { LanguageSelector } from 'modules';
 import { RenderIf } from 'ui/helpers';
-import { StyledContainer, StyledHeader, StyledButtonIcon } from './Header.styles';
+import { StyledContainer, StyledHeader, StyledButtonIcon, StyledUEatsLogo } from './Header.styles';
 
 function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -14,12 +14,13 @@ function Header(): JSX.Element {
   return (
     <StyledHeader>
       <StyledContainer>
-        <UEatsLogo />
+        <StyledUEatsLogo />
         <RenderIf isTrue={Boolean(REACT_APP_PROJECT_REPO_URL)}>
           <StyledButtonIcon type="button" title={t('See source code')} onClick={goToRepoPage} variant="text">
             <GitHubIcon />
           </StyledButtonIcon>
         </RenderIf>
+        <LanguageSelector />
       </StyledContainer>
     </StyledHeader>
   );
