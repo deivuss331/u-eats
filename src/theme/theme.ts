@@ -18,6 +18,7 @@ export const theme: DefaultTheme = {
     primary: '"Roboto", sans-serif',
   },
   zIndex: {
+    header: 50,
     heroImage: -1,
   },
   color: {
@@ -25,7 +26,7 @@ export const theme: DefaultTheme = {
     [Colors.WHITE]: '#fff',
     [Colors.BACKGROUND]: '#f9f9f9',
     [Colors.GREY_LIGHT]: '#f8f9fa',
-    [Colors.ACCENT]: '#eb5e28',
+    [Colors.ACCENT]: '#FF7700',
     [Colors.DANGER]: '#d90429',
   },
   boxShadow: {
