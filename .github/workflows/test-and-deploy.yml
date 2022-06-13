@@ -35,8 +35,18 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: 📦 Install dependencies
         uses: bahmutov/npm-install@v1
+      - name: 🗞 Get new release version
+        run: npx semantic-release@17 --dry-run --no-ci
+      - name: Assign release version from to env variable
+        run: cat .VERSION >> $GITHUB_ENV
       - name: 🏗 Build app
         run: npm run build
+        env:
+          REACT_APP_VERSION: $VERSION
+          REACT_APP_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
+          REACT_APP_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
+          REACT_APP_PROJECT_REPO_URL: ${{github.repository}}
+          REACT_APP_BING_MAPS_API_KEY: ${{secrets.BING_MAPS_API_KEY}}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:

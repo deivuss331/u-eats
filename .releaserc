@@ -1,0 +1,11 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    ["@semantic-release/npm", {
+      "npmPublish": false,
+    }],
+    ["@semantic-release/exec", {
+      "verifyReleaseCmd": "echo ${nextRelease.version} > .VERSION"
+    }],
+  ]
+}
