@@ -2,6 +2,7 @@ import type { AppConfig } from 'types';
 
 const config: AppConfig = {
   api: {
+    useMocks: true,
     urls: {
       getLocationsByQuery: (q) => `http://dev.virtualearth.net/REST/v1/Locations/${q}`,
     },

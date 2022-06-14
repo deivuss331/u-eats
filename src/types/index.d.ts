@@ -2,6 +2,7 @@ import type { DefaultOptions } from 'react-query';
 
 export interface AppConfig {
   api: {
+    useMocks: boolean;
     urls: {
       getLocationsByQuery: (q: string) => string;
     };

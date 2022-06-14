@@ -50,7 +50,8 @@
       {
         "namedComponents": "function-declaration"
       }
-    ]
+    ],
+    "no-restricted-exports": 0
   },
   "settings": {
     "import/parsers": {
