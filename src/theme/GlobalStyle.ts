@@ -15,7 +15,17 @@ export default createGlobalStyle<{ theme: DefaultTheme }>`
     font-size: ${({ theme }) => theme.fontSize.textBase};
     font-weight: ${({ theme }) => theme.fontWeight.textBase};
     line-height: ${({ theme }) => theme.lineHeight.textBase};
-  } 
+  }
+  
+  body,
+  #root {
+    height: inherit;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
 
   * {
     &, &:before, &:after {

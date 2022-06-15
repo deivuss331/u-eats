@@ -1,5 +1,5 @@
 import type { ComponentCommonProps } from 'types';
-import heroImage from 'assets/images/tasty-sushi.jpg';
+import heroImage from 'assets/images/tasty-food.jpg';
 import { StyledImage, StyledWrapper } from './HeroImage.styles';
 
 function HeroImage({ className }: ComponentCommonProps): JSX.Element {

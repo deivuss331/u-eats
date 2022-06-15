@@ -16,10 +16,6 @@ export const StyledContainer = styled(Container)`
   padding-bottom: ${({ theme }) => theme.space[4]};
 `;
 
-export const StyledHeader = styled.header`
-  color: ${({ theme }) => theme.color.white};
-`;
-
 export const StyledButtonIcon = styled(ButtonIcon)`
   && {
     color: inherit;

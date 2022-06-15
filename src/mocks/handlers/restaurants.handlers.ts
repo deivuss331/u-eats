@@ -23,6 +23,10 @@ const handlers: MockedRestHandlerType[] = [
       postalCode,
     };
 
+    if (!locality || !countryRegion) {
+      return res(ctx.status(404), ctx.delay(getResponseDelay()));
+    }
+
     return res(ctx.status(200), ctx.delay(getResponseDelay()), ctx.json(restaurantsMap.create(location)));
   }),
 ];

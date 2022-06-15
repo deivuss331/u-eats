@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { LanguageSelector } from 'modules';
 import { RenderIf } from 'ui/helpers';
-import { StyledContainer, StyledHeader, StyledButtonIcon, StyledUEatsLogo } from './Header.styles';
+import { StyledContainer, StyledButtonIcon, StyledUEatsLogo } from './Header.styles';
 
 function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ function Header(): JSX.Element {
   const goToRepoPage = () => window.open(REACT_APP_PROJECT_REPO_URL, '_blank', 'noopener,noreferrer');
 
   return (
-    <StyledHeader>
+    <header>
       <StyledContainer>
         <StyledUEatsLogo />
         <RenderIf isTrue={Boolean(REACT_APP_PROJECT_REPO_URL)}>
@@ -22,7 +22,7 @@ function Header(): JSX.Element {
         </RenderIf>
         <LanguageSelector />
       </StyledContainer>
-    </StyledHeader>
+    </header>
   );
 }
 
