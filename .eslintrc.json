@@ -51,7 +51,8 @@
         "namedComponents": "function-declaration"
       }
     ],
-    "no-restricted-exports": 0
+    "no-restricted-exports": 0,
+    "no-underscore-dangle": 0
   },
   "settings": {
     "import/parsers": {

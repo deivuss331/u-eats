@@ -15,7 +15,7 @@ interface DeliveryCitiesListItemProps {
 function DeliveryCitiesListItem({ location, linkAria = {} }: DeliveryCitiesListItemProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const { locality, countryRegion } = location;
+  const { countryRegion } = location;
 
   return (
     <li>
@@ -24,7 +24,7 @@ function DeliveryCitiesListItem({ location, linkAria = {} }: DeliveryCitiesListI
         onClick={() => dispatch(actions.setFormPayload(location))}
         to={{
           pathname: appPaths.browseRestaurants(),
-          search: queryString.stringify({ locality, countryRegion }),
+          search: queryString.stringify(location),
         }}
         {...linkAria}
       >

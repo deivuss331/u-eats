@@ -5,6 +5,7 @@ export interface AppConfig {
     useMocks: boolean;
     urls: {
       getLocationsByQuery: (q: string) => string;
+      getRestaurantsByParsedBingLocation: () => string;
     };
   };
   reactQuery: {
@@ -35,6 +36,15 @@ export type DeliveryAddressFormPayload = ParsedBingLocation;
 /**
  * Api types
  */
+
+export interface PageableResponse<T> {
+  totalPages: number;
+  pageable: {
+    page: number;
+    size: number;
+  };
+  content: T[];
+}
 
 export type BingConfidence = 'High' | 'Medium' | 'Low';
 
@@ -70,8 +80,28 @@ export interface ParsedBingLocation {
 
 export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
 
+export interface ApiPrice {
+  amountInCents: number;
+}
+
+export interface RestaurantBriefData {
+  id: string;
+  name: string;
+  coverImg: string;
+  reviews: {
+    avg: number;
+  };
+  delivery: {
+    fee: ApiPrice;
+    durationInMinutes: {
+      min: number;
+      max: number;
+    };
+  };
+}
+
 /**
  * Utils
  */
 
-type RequiredExceptFor<T, TOptional extends keyof T> = Required<T> & Pick<T, TOptional>;
+export type RequiredExceptFor<T, TOptional extends keyof T> = Required<T> & Pick<T, TOptional>;
