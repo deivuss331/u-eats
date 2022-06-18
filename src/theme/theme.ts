@@ -30,6 +30,7 @@ export const theme: DefaultTheme = {
     [Colors.DANGER]: '#d90429',
   },
   boxShadow: {
+    header: '0 3px 6px rgb(0 0 0 / 10%)',
     popup: '0 5px 10px rgba(0,0,0, 0.23)',
   },
   space: {

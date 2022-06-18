@@ -16,6 +16,7 @@ declare module 'styled-components' {
     };
     color: Record<Colors, string>;
     boxShadow: {
+      header: string;
       popup: string;
     };
     space: {

@@ -9,17 +9,11 @@ export default createGlobalStyle<{ theme: DefaultTheme }>`
     scroll-behavior: smooth;
     background-color: ${({ theme }) => theme.color.background};
     overflow-x: hidden;
-    height: calc(100vh - calc(100vh - 100%));
     color: ${({ theme }) => theme.color.black};
     font-family: ${({ theme }) => theme.fontFamily.primary};
     font-size: ${({ theme }) => theme.fontSize.textBase};
     font-weight: ${({ theme }) => theme.fontWeight.textBase};
     line-height: ${({ theme }) => theme.lineHeight.textBase};
-  }
-  
-  body,
-  #root {
-    height: inherit;
   }
   
   #root {
