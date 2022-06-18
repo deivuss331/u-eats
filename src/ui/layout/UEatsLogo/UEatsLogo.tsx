@@ -1,12 +1,14 @@
 import type { ComponentCommonProps } from 'types';
-import { H4 } from 'ui/typography';
-import { ColorAccent } from './UEatsLogo.styles';
+import { appPaths } from 'routes';
+import { StyledHeadline, ColorAccent, StyledLink } from './UEatsLogo.styles';
 
 function UEatsLogo({ className }: ComponentCommonProps): JSX.Element {
   return (
-    <H4 as="h2" className={className}>
-      <ColorAccent>🍕 U</ColorAccent>-Eats
-    </H4>
+    <StyledHeadline as="h2" className={className}>
+      <StyledLink to={appPaths.root()}>
+        <ColorAccent>🍕 U</ColorAccent>-Eats
+      </StyledLink>
+    </StyledHeadline>
   );
 }
 
