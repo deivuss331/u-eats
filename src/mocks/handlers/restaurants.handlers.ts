@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import queryString from 'query-string';
 import config from 'config';
 import { FlyweightMap } from 'utils';
 import { getResponseDelay, getPageableResponse } from 'mocks/utils';
@@ -9,9 +10,7 @@ import type { MockedRestHandlerType } from '../types';
 /**
  * Flyweight pattern will prevent re-creating restaurants mocks if already exists for given location
  */
-const restaurantsMap = new FlyweightMap<ParsedBingLocation, RestaurantBriefData[]>(
-  db.getRestaurantsBriefData,
-);
+const restaurantsMap = new FlyweightMap<string, RestaurantBriefData[]>(db.getRestaurantsBriefData);
 
 const handlers: MockedRestHandlerType[] = [
   rest.get(config.api.urls.getRestaurantsByParsedBingLocation(), (req, res, ctx) => {
@@ -29,7 +28,7 @@ const handlers: MockedRestHandlerType[] = [
       return res(ctx.status(404), ctx.delay(getResponseDelay()));
     }
 
-    const content = restaurantsMap.create(location);
+    const content = restaurantsMap.create(queryString.stringify(location));
 
     return res(
       ctx.status(200),
