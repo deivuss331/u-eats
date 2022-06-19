@@ -20,7 +20,7 @@ interface ReturnProps {
 
 const useGetRestaurantsByParsedBingLocation = ({ page, location, enabled = true }: Props): ReturnProps => {
   const reqUrl: string = config.api.urls.getRestaurantsByParsedBingLocation();
-  const queryParams: string = queryString.stringify(location);
+  const queryParams: string = queryString.stringify({ ...location, page });
 
   const {
     data: { data } = {},

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const SEARCH_PARAMS_PAGE_KEY: string = 'page';
@@ -9,17 +9,18 @@ interface Props {
 
 const usePageableSearchParams = ({ defaultPage = 0 }: Props | undefined = {}) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get(SEARCH_PARAMS_PAGE_KEY)) || defaultPage;
-  const validPage = Number.isNaN(page) ? defaultPage : page;
+  const searchParamsPage = Number(searchParams.get(SEARCH_PARAMS_PAGE_KEY)) || defaultPage;
+  const [page, setPage] = useState<number>(Number.isNaN(searchParamsPage) ? defaultPage : searchParamsPage);
 
   useEffect(() => {
-    searchParams.set(SEARCH_PARAMS_PAGE_KEY, validPage.toString());
+    searchParams.set(SEARCH_PARAMS_PAGE_KEY, page.toString());
 
     setSearchParams(searchParams);
-  }, [searchParams]);
+  }, [page]);
 
   return {
-    page: validPage,
+    page,
+    setPage,
   };
 };
 

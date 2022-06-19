@@ -34,5 +34,10 @@ export const muiTheme = createTheme({
         variant: 'contained',
       },
     },
+    MuiPagination: {
+      defaultProps: {
+        color: 'primary',
+      },
+    },
   },
 });
