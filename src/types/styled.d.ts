@@ -64,5 +64,12 @@ declare module 'styled-components' {
       h5: string;
       h6: string;
     };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+    };
   }
 }
