@@ -1,5 +1,6 @@
-import { RestaurantCard } from 'modules';
 import type { RestaurantBriefData, ComponentCommonProps } from 'types';
+import { RestaurantCard } from 'modules';
+import { StyledUl } from './RestaurantsList.styles';
 
 interface RestaurantsListProps extends ComponentCommonProps {
   restaurants: RestaurantBriefData[];
@@ -7,13 +8,13 @@ interface RestaurantsListProps extends ComponentCommonProps {
 
 function RestaurantsList({ restaurants, className }: RestaurantsListProps): JSX.Element {
   return (
-    <ul className={className}>
+    <StyledUl className={className}>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
           <RestaurantCard restaurant={restaurant} />
         </li>
       ))}
-    </ul>
+    </StyledUl>
   );
 }
 

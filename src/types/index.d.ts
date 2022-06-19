@@ -82,6 +82,7 @@ export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, '
 
 export interface ApiPrice {
   amountInCents: number;
+  currency: string;
 }
 
 export interface RestaurantBriefData {

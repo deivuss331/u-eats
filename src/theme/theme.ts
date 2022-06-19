@@ -2,10 +2,12 @@ import type { DefaultTheme } from 'styled-components';
 
 export enum Colors {
   BLACK = 'black',
+  SEMI_BLACK = 'semiBlack',
   WHITE = 'white',
   BACKGROUND = 'background',
   GREY_LIGHT = 'greyLight',
   ACCENT = 'accent',
+  WARNING = 'warning',
   DANGER = 'danger',
 }
 
@@ -23,10 +25,12 @@ export const theme: DefaultTheme = {
   },
   color: {
     [Colors.BLACK]: '#090910',
+    [Colors.SEMI_BLACK]: '#423F3E',
     [Colors.WHITE]: '#fff',
     [Colors.BACKGROUND]: '#f9f9f9',
     [Colors.GREY_LIGHT]: '#f8f9fa',
     [Colors.ACCENT]: '#FF7700',
+    [Colors.WARNING]: '#FFCD38',
     [Colors.DANGER]: '#d90429',
   },
   boxShadow: {
