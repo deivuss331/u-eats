@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export default styled.main`
-  margin-top: 100px;
+  margin: 100px 0;
 `;
