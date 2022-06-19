@@ -37,12 +37,14 @@ export type DeliveryAddressFormPayload = ParsedBingLocation;
  * Api types
  */
 
+export interface Pageable {
+  page: number;
+  size: number;
+}
+
 export interface PageableResponse<T> {
   totalPages: number;
-  pageable: {
-    page: number;
-    size: number;
-  };
+  pageable: Pageable;
   content: T[];
 }
 

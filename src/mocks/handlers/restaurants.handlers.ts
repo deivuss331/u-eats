@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 import config from 'config';
 import { FlyweightMap } from 'utils';
-import { getResponseDelay } from 'mocks/utils';
+import { getResponseDelay, getPageableResponse } from 'mocks/utils';
 import * as db from 'mocks/db';
 import type { ParsedBingLocation, RestaurantBriefData } from 'types';
 import type { MockedRestHandlerType } from '../types';
@@ -15,7 +15,9 @@ const restaurantsMap = new FlyweightMap<ParsedBingLocation, RestaurantBriefData[
 
 const handlers: MockedRestHandlerType[] = [
   rest.get(config.api.urls.getRestaurantsByParsedBingLocation(), (req, res, ctx) => {
-    const { addressLine, countryRegion, locality, postalCode } = Object.fromEntries(req.url.searchParams);
+    const { page, size, addressLine, countryRegion, locality, postalCode } = Object.fromEntries(
+      req.url.searchParams,
+    );
     const location: ParsedBingLocation = {
       addressLine,
       countryRegion,
@@ -27,7 +29,13 @@ const handlers: MockedRestHandlerType[] = [
       return res(ctx.status(404), ctx.delay(getResponseDelay()));
     }
 
-    return res(ctx.status(200), ctx.delay(getResponseDelay()), ctx.json(restaurantsMap.create(location)));
+    const content = restaurantsMap.create(location);
+
+    return res(
+      ctx.status(200),
+      ctx.delay(getResponseDelay()),
+      ctx.json(getPageableResponse({ page: +page, size: +size, content })),
+    );
   }),
 ];
 
