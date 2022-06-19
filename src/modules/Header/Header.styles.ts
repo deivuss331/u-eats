@@ -2,22 +2,17 @@ import styled from 'styled-components';
 import { ButtonIcon } from 'ui/form';
 import { Container, UEatsLogo } from 'ui/layout';
 
-interface StyledContainerProps {
+interface StyledHeaderProps {
   $hasVisibleBackground: boolean;
 }
 
-export const StyledContainer = styled(Container)<StyledContainerProps>`
+export const StyledHeader = styled.header<StyledHeaderProps>`
   position: fixed;
   top: 0;
   left: 50%;
   z-index: ${({ theme }) => theme.zIndex.header};
   transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: ${({ theme }) => theme.space[4]};
-  padding-top: ${({ theme }) => theme.space[4]};
-  padding-bottom: ${({ theme }) => theme.space[4]};
+  width: 100%;
 
   &:before {
     content: '';
@@ -31,6 +26,15 @@ export const StyledContainer = styled(Container)<StyledContainerProps>`
     transform: ${({ $hasVisibleBackground }) => ($hasVisibleBackground ? null : `translateY(-100%)`)};
     transition: transform 0.24s ease-in-out, opacity 0.28s ease-in-out;
   }
+`;
+
+export const StyledContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.space[4]};
+  padding-top: ${({ theme }) => theme.space[4]};
+  padding-bottom: ${({ theme }) => theme.space[4]};
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
