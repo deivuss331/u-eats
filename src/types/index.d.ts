@@ -25,13 +25,17 @@ export interface AppPaths {
 
 export interface ComponentCommonProps {
   className?: string;
-}
-
-export interface BrowseRestaurantsSearchParams extends ParsedBingLocation {
-  query?: string;
+  id?: string;
 }
 
 export type DeliveryAddressFormPayload = ParsedBingLocation;
+
+export type RestaurantPriceRange = 'cheap' | 'medium' | 'expensive';
+
+export interface RestaurantsFiltersFormPayload {
+  sortBy?: 'reviewsAsc' | 'reviewsDesc' | 'fastestDelivery' | 'slowestDelivery';
+  priceRange?: RestaurantPriceRange;
+}
 
 /**
  * Api types
@@ -91,6 +95,7 @@ export interface RestaurantBriefData {
   id: string;
   name: string;
   coverImg: string;
+  priceRange: RestaurantPriceRange;
   reviews: {
     avg: number;
   };

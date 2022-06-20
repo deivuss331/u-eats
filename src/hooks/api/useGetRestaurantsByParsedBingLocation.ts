@@ -1,14 +1,13 @@
 import { useQuery } from 'react-query';
+import { useSearchParams } from 'react-router-dom';
 import queryString from 'query-string';
 import config from 'config';
 import { apiClient } from 'services';
-import type { ParsedBingLocation, RestaurantBriefData, PageableResponse } from 'types';
+import type { RestaurantBriefData, PageableResponse } from 'types';
 
 const PAGE_SIZE: number = 24;
 
 interface Props {
-  page: number;
-  location: ParsedBingLocation;
   enabled?: boolean;
 }
 
@@ -18,9 +17,12 @@ interface ReturnProps {
   isError: boolean;
 }
 
-const useGetRestaurantsByParsedBingLocation = ({ page, location, enabled = true }: Props): ReturnProps => {
+const useGetRestaurantsByParsedBingLocation = ({ enabled = true }: Props | undefined = {}): ReturnProps => {
+  const [searchParams] = useSearchParams();
+
+  const searchParamsObject = Object.fromEntries(searchParams);
   const reqUrl: string = config.api.urls.getRestaurantsByParsedBingLocation();
-  const queryParams: string = queryString.stringify({ ...location, page });
+  const queryParams: string = queryString.stringify(searchParamsObject);
 
   const {
     data: { data } = {},
@@ -32,8 +34,7 @@ const useGetRestaurantsByParsedBingLocation = ({ page, location, enabled = true 
     () =>
       apiClient.get<PageableResponse<RestaurantBriefData>>(reqUrl, {
         params: {
-          ...location,
-          page,
+          ...searchParamsObject,
           size: PAGE_SIZE,
         },
       }),

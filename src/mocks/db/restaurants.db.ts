@@ -1,3 +1,4 @@
+import { sample } from 'lodash-es';
 import faker from 'mocks/faker-client';
 import type { RestaurantBriefData } from 'types';
 import { getRestaurantCoverImageUrl } from 'mocks/utils';
@@ -18,6 +19,7 @@ export const getRestaurantBriefData = (): RestaurantBriefData => ({
   id: faker.datatype.uuid(),
   name: faker.company.companyName(),
   coverImg: getRestaurantCoverImageUrl(),
+  priceRange: sample(['cheap', 'medium', 'expensive'])!,
   reviews: {
     avg:
       Math.round(

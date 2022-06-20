@@ -13,6 +13,17 @@
     "Select app language": "Select app language",
     "Made by": "Made by",
     "min": "min",
-    "Delivery": "Delivery"
+    "Delivery": "Delivery",
+    "Sort by": "Sort by",
+    "Do not sort (default)": "Do not sort (default)",
+    "Reviews descending": "Reviews descending",
+    "Reviews ascending": "Reviews ascending",
+    "Fastest delivery": "Fastest delivery",
+    "Slowest delivery": "Slowest delivery",
+    "All": "All",
+    "Expensive": "Expensive",
+    "Medium price": "Medium price",
+    "Cheap": "Cheap",
+    "Price range": "Price range"
   }
 }
