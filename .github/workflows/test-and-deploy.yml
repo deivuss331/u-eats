@@ -34,7 +34,7 @@ jobs:
       - name: 📦 Install dependencies
         uses: bahmutov/npm-install@v1
       - name: 🏗 Build app
-        run: npm run build
+        run: CI=false npm run build
         env:
           REACT_APP_VERSION: $VERSION
           REACT_APP_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
@@ -42,7 +42,7 @@ jobs:
           REACT_APP_PROJECT_REPO_URL: ${{github.repository}}
           REACT_APP_BING_MAPS_API_KEY: ${{secrets.BING_MAPS_API_KEY}}
       - name: 🚀 Deploy
-        run: crazy-max/ghaction-github-pages@v1
+        uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
           build_dir: build
