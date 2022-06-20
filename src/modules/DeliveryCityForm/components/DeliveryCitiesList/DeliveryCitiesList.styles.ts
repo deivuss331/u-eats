@@ -6,6 +6,7 @@ export const StyledWrapper = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.color.white};
   box-shadow: ${({ theme }) => theme.boxShadow.popup};
+  z-index: ${({ theme }) => theme.zIndex.popup};
 `;
 
 export const StyledHeadline = styled(H6)`

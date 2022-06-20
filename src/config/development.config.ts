@@ -15,7 +15,7 @@ const config: AppConfig = {
   reactQuery: {
     defaultOptions: {
       queries: {
-        retry: 2,
+        retry: 1,
         staleTime: Infinity,
         cacheTime: Infinity,
         refetchOnMount: false,

@@ -21,6 +21,7 @@ export const theme: DefaultTheme = {
   },
   zIndex: {
     header: 50,
+    popup: 5,
     heroImage: -1,
   },
   color: {
