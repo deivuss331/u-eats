@@ -12,6 +12,7 @@ declare module 'styled-components' {
     };
     zIndex: {
       header: number;
+      popup: number;
       heroImage: number;
     };
     color: Record<Colors, string>;
