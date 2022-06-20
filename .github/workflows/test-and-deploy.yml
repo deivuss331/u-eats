@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '18.0.0'
       - name: 📦 Install dependencies
-        run: npm i
+        uses: bahmutov/npm-install@v1
       - name: 🧪 Run tests
         run: npm run test
 
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '18.0.0'
       - name: 📦 Install dependencies
-        run: npm i
+        uses: bahmutov/npm-install@v1
       - name: 🏗 Build app
         run: CI=false npm run build
         env:

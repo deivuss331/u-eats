@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Dawid Zajac <zajdawid@protonmail.com>",
   "private": true,
+  "homepage": "/u-eats",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
