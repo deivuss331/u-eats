@@ -34,7 +34,7 @@ const handlers: MockedRestHandlerType[] = [
     } as RestaurantsFiltersFormPayload);
 
     return res(
-      ctx.status(200),
+      ctx.status(400),
       ctx.delay(getResponseDelay()),
       ctx.json(getPageableResponse({ page: +page, size: +size, content: filteredRestaurants })),
     );

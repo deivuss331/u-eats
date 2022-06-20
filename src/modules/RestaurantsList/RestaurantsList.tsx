@@ -6,9 +6,9 @@ interface RestaurantsListProps extends ComponentCommonProps {
   restaurants: RestaurantBriefData[];
 }
 
-function RestaurantsList({ restaurants, className }: RestaurantsListProps): JSX.Element {
+function RestaurantsList({ restaurants, ...commonProps }: RestaurantsListProps): JSX.Element {
   return (
-    <StyledUl className={className}>
+    <StyledUl {...commonProps}>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
           <RestaurantCard restaurant={restaurant} />

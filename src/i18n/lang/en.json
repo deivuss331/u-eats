@@ -24,6 +24,8 @@
     "Expensive": "Expensive",
     "Medium price": "Medium price",
     "Cheap": "Cheap",
-    "Price range": "Price range"
+    "Price range": "Price range",
+    "No results found...": "No results found...",
+    "Couldn't fetch restaurants...": "Couldn't fetch restaurants..."
   }
 }

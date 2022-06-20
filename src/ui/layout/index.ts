@@ -6,3 +6,4 @@ export { default as UEatsLogo } from './UEatsLogo/UEatsLogo';
 export { default as MainContent } from './MainContent/MainContent';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as Accordion } from './Accordion/Accordion';
+export { default as Alert } from './Alert/Alert';

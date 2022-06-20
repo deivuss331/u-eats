@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Pagination } from 'ui/layout';
-import { RestaurantsFilters } from 'modules';
 
 export const StyledPagination = styled(Pagination)`
   margin-top: ${({ theme }) => theme.space[10]};
@@ -17,9 +16,10 @@ export const StyledContentGrid = styled.div`
   }
 `;
 
-export const StyledRestaurantsFilters = styled(RestaurantsFilters)`
+export const StyledFiltersWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     position: sticky;
     top: 100px;
+    height: fit-content;
   }
 `;
