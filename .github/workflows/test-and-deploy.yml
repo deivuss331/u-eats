@@ -21,7 +21,7 @@ jobs:
       - name: 🧪 Run tests
         run: npm run test
 
-  release:
+  deploy:
     name: 🚀 Deploy
     runs-on: ubuntu-latest
     steps:
@@ -31,12 +31,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.0.0'
+      - name: 💾 Get app version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
       - name: 📦 Install dependencies
         run: npm i
       - name: 🏗 Build app
         run: CI=false npm run build
         env:
-          REACT_APP_VERSION: $VERSION
+          REACT_APP_VERSION: ${{steps.package-version.outputs.current-version}}
           REACT_APP_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
           REACT_APP_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
           REACT_APP_PROJECT_REPO_URL: ${{github.repository}}
