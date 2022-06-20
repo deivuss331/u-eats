@@ -2,9 +2,9 @@ import { rest } from 'msw';
 import queryString from 'query-string';
 import config from 'config';
 import { FlyweightMap } from 'utils';
-import { getResponseDelay, getPageableResponse } from 'mocks/utils';
+import { getResponseDelay, getPageableResponse, filterRestaurants } from 'mocks/utils';
 import * as db from 'mocks/db';
-import type { ParsedBingLocation, RestaurantBriefData } from 'types';
+import type { ParsedBingLocation, RestaurantBriefData, RestaurantsFiltersFormPayload } from 'types';
 import type { MockedRestHandlerType } from '../types';
 
 /**
@@ -14,9 +14,8 @@ const restaurantsMap = new FlyweightMap<string, RestaurantBriefData[]>(db.getRes
 
 const handlers: MockedRestHandlerType[] = [
   rest.get(config.api.urls.getRestaurantsByParsedBingLocation(), (req, res, ctx) => {
-    const { page, size, addressLine, countryRegion, locality, postalCode } = Object.fromEntries(
-      req.url.searchParams,
-    );
+    const { page, size, sortBy, priceRange, addressLine, countryRegion, locality, postalCode } =
+      Object.fromEntries(req.url.searchParams);
     const location: ParsedBingLocation = {
       addressLine,
       countryRegion,
@@ -28,12 +27,16 @@ const handlers: MockedRestHandlerType[] = [
       return res(ctx.status(404), ctx.delay(getResponseDelay()));
     }
 
-    const content = restaurantsMap.create(queryString.stringify(location));
+    const restaurants = restaurantsMap.create(queryString.stringify(location));
+    const filteredRestaurants = filterRestaurants(restaurants, {
+      sortBy,
+      priceRange,
+    } as RestaurantsFiltersFormPayload);
 
     return res(
       ctx.status(200),
       ctx.delay(getResponseDelay()),
-      ctx.json(getPageableResponse({ page: +page, size: +size, content })),
+      ctx.json(getPageableResponse({ page: +page, size: +size, content: filteredRestaurants })),
     );
   }),
 ];
