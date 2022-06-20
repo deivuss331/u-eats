@@ -5,7 +5,14 @@ import config from 'config';
 import 'i18n';
 
 if (config.api.useMocks) {
+  if (window.location.pathname === '/u-eats') {
+    window.location.pathname = '/u-eats/';
+  }
+
   require('./mocks/browser').default.start({
+    serviceWorker: {
+      url: '/u-eats/mockServiceWorker.js',
+    },
     onUnhandledRequest: 'bypass', // Hide warnings about unhandled (by MSW) requests
   });
 }
