@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HeroImage, Container } from 'ui/layout';
+import { HeroImage, Container, MainContent } from 'ui/layout';
 import { H1 } from 'ui/typography';
 
 export const StyledWrapper = styled.div`
@@ -20,12 +20,13 @@ export const StyledHeroContainer = styled(Container)`
   align-items: center;
 `;
 
-export const StyledMain = styled.main`
+export const StyledMain = styled(MainContent)`
   width: 100%;
   max-width: 740px;
   background: ${({ theme }) => theme.color.white};
   padding: ${({ theme }) => theme.space[6]} ${({ theme }) => theme.space[8]};
   box-shadow: ${({ theme }) => theme.boxShadow.popup};
+  margin: 0;
 `;
 
 export const StyledH1 = styled(H1)`

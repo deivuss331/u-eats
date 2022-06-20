@@ -1,24 +1,47 @@
-// import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
-import type { BrowseRestaurantsSearchParams } from 'types';
+import { useTranslation } from 'react-i18next';
+import { usePageableSearchParams } from 'hooks';
+import { useGetRestaurantsByParsedBingLocation } from 'hooks/api';
+import { RestaurantsList, RestaurantsFilters } from 'modules';
+import { RestaurantsFiltersSkeleton } from 'modules/RestaurantsFilters';
+import { RestaurantsListSkeleton } from 'modules/RestaurantsList';
+import { Container, MainContent, Alert } from 'ui/layout';
+import { StyledPagination, StyledContentGrid, StyledFiltersWrapper } from './BrowseRestaurants.styles';
+
 // import { appPaths } from 'routes';
 
 function BrowseRestaurants(): JSX.Element {
-  const { search } = useLocation();
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { page, setPage } = usePageableSearchParams();
+  const { data, isLoading, isError } = useGetRestaurantsByParsedBingLocation();
 
-  const { locality, countryRegion, query }: BrowseRestaurantsSearchParams = queryString.parse(search);
+  return (
+    <Container>
+      <MainContent>
+        <StyledContentGrid>
+          <StyledFiltersWrapper>
+            {isLoading ? <RestaurantsFiltersSkeleton /> : <RestaurantsFilters />}
+          </StyledFiltersWrapper>
 
-  console.log(locality, countryRegion, query);
-
-  // useEffect(() => {
-  //   if (!locality || !countryRegion) {
-  //     navigate(appPaths.root());
-  //   }
-  // }, [locality, countryRegion]);
-
-  return <p>eee</p>;
+          {isLoading ? (
+            <RestaurantsListSkeleton />
+          ) : data?.content.length ? (
+            <div>
+              <RestaurantsList restaurants={data.content} />
+              <StyledPagination
+                count={data.totalPages}
+                page={page}
+                onChange={(_, newPage) => setPage(newPage)}
+              />
+            </div>
+          ) : isError ? (
+            <Alert severity="error">{t("Couldn't fetch restaurants...")}</Alert>
+          ) : (
+            <Alert severity="info">{t('No results found...')}</Alert>
+          )}
+        </StyledContentGrid>
+      </MainContent>
+    </Container>
+  );
 }
 
 export default BrowseRestaurants;

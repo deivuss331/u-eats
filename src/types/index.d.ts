@@ -2,8 +2,10 @@ import type { DefaultOptions } from 'react-query';
 
 export interface AppConfig {
   api: {
+    useMocks: boolean;
     urls: {
       getLocationsByQuery: (q: string) => string;
+      getRestaurantsByParsedBingLocation: () => string;
     };
   };
   reactQuery: {
@@ -23,17 +25,32 @@ export interface AppPaths {
 
 export interface ComponentCommonProps {
   className?: string;
-}
-
-export interface BrowseRestaurantsSearchParams extends ParsedBingLocation {
-  query?: string;
+  id?: string;
 }
 
 export type DeliveryAddressFormPayload = ParsedBingLocation;
 
+export type RestaurantPriceRange = 'cheap' | 'medium' | 'expensive';
+
+export interface RestaurantsFiltersFormPayload {
+  sortBy?: 'reviewsAsc' | 'reviewsDesc' | 'fastestDelivery' | 'slowestDelivery';
+  priceRange?: RestaurantPriceRange;
+}
+
 /**
  * Api types
  */
+
+export interface Pageable {
+  page: number;
+  size: number;
+}
+
+export interface PageableResponse<T> {
+  totalPages: number;
+  pageable: Pageable;
+  content: T[];
+}
 
 export type BingConfidence = 'High' | 'Medium' | 'Low';
 
@@ -69,8 +86,30 @@ export interface ParsedBingLocation {
 
 export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
 
+export interface ApiPrice {
+  amountInCents: number;
+  currency: string;
+}
+
+export interface RestaurantBriefData {
+  id: string;
+  name: string;
+  coverImg: string;
+  priceRange: RestaurantPriceRange;
+  reviews: {
+    avg: number;
+  };
+  delivery: {
+    fee: ApiPrice;
+    durationInMinutes: {
+      min: number;
+      max: number;
+    };
+  };
+}
+
 /**
  * Utils
  */
 
-type RequiredExceptFor<T, TOptional extends keyof T> = Required<T> & Pick<T, TOptional>;
+export type RequiredExceptFor<T, TOptional extends keyof T> = Required<T> & Pick<T, TOptional>;

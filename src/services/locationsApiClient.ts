@@ -1,6 +1,10 @@
-import apiClient from './apiClient';
+import axios from 'axios';
 
-const locationsApiClient = apiClient;
+const locationsApiClient = axios.create({
+  headers: {
+    'Content-type': 'application/json',
+  },
+});
 
 /* eslint-disable */
 locationsApiClient.interceptors.request.use((config) => {

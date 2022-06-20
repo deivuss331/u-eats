@@ -12,7 +12,7 @@ export const StyledWrapper = styled.div`
     display: block;
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);
   }
 `;
 

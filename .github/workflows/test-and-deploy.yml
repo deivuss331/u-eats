@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📝 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: 🟢 Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org
+          node-version: '18.0.0'
       - name: 📦 Install dependencies
-        run: npm i
+        run: npm ci
       - name: 🧪 Run tests
         run: npm run test
 
@@ -27,18 +26,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📝 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: 🟢 Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org
+          node-version: '18.0.0'
       - name: 📦 Install dependencies
-        run: npm i
-      - name: 🗞 Get new release version
-        run: npx semantic-release@17 --dry-run --no-ci
-      - name: Assign release version from to env variable
-        run: cat .VERSION >> $GITHUB_ENV
+        run: npm ci
       - name: 🏗 Build app
         run: npm run build
         env:
@@ -47,8 +41,10 @@ jobs:
           REACT_APP_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
           REACT_APP_PROJECT_REPO_URL: ${{github.repository}}
           REACT_APP_BING_MAPS_API_KEY: ${{secrets.BING_MAPS_API_KEY}}
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+      - name: 🚀 Deploy
+        run: crazy-max/ghaction-github-pages@v1
         with:
-          branch: gh-pages
-          folder: build
+          target_branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{secrets.GH_TOKEN}}

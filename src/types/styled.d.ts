@@ -16,6 +16,7 @@ declare module 'styled-components' {
     };
     color: Record<Colors, string>;
     boxShadow: {
+      header: string;
       popup: string;
     };
     space: {
@@ -62,6 +63,13 @@ declare module 'styled-components' {
       h4: string;
       h5: string;
       h6: string;
+    };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
     };
   }
 }
