@@ -42,7 +42,7 @@ jobs:
           REACT_APP_PROJECT_REPO_URL: ${{github.repository}}
           REACT_APP_BING_MAPS_API_KEY: ${{secrets.BING_MAPS_API_KEY}}
       - name: 🚀 Deploy
-        run: crazy-max/ghaction-github-pages@v1
+        uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
           build_dir: build
