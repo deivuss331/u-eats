@@ -1,4 +1,4 @@
-name: 🚀 Test and deploy
+name: 🚀 Deploy on Github Pages
 
 on:
   push:
@@ -6,21 +6,6 @@ on:
       - main
 
 jobs:
-  test:
-    name: 🧪 Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📝 Checkout
-        uses: actions/checkout@v2
-      - name: 🟢 Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '18.0.0'
-      - name: 📦 Install dependencies
-        run: npm i
-      - name: 🧪 Run tests
-        run: npm run test
-
   deploy:
     name: 🚀 Deploy
     runs-on: ubuntu-latest
