@@ -48,8 +48,6 @@
     "build": "npm run build:production",
     "build:development": "cross-env REACT_APP_CONFIG=DEVELOPMENT react-scripts build",
     "build:production": "cross-env REACT_APP_CONFIG=PRODUCTION react-scripts build",
-    "test": "cross-env REACT_APP_CONFIG=TEST react-scripts test",
-    "test:coverage": "cross-env REACT_APP_CONFIG=TEST react-scripts test --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --no-error-on-unmatched-pattern --fix src/**/*.{js,jsx,ts,tsx}",
@@ -83,24 +81,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "**/src/**/*.{js,jsx,ts,tsx}",
-      "!**/src/**/*.style.{js,jsx,ts,tsx}"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "coverageReporters": [
-      "html",
-      "text"
     ]
   },
   "devDependencies": {
