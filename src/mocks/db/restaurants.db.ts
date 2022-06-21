@@ -1,7 +1,7 @@
 import { sample } from 'lodash-es';
 import queryString from 'query-string';
 import faker from 'mocks/faker-client';
-import type { RestaurantBriefData } from 'types';
+import type { RestaurantBriefData, RestaurantData } from 'types';
 import { getRestaurantCoverImageUrl, createSlug } from 'mocks/utils';
 import { CURRENCY } from 'mocks/constants';
 
@@ -16,8 +16,8 @@ const MAX_DELIVERY_DURATION_IN_MINUTES: number = 30;
 const MIN_AVG_REVIEWS_SCORE: number = 2;
 const MAX_AVG_REVIEWS_SCORE: number = 5;
 
-export const getRestaurantBriefData = (queryParams: string): RestaurantBriefData => {
-  const { countryRegion, locality } = queryString.parse(queryParams);
+export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefData => {
+  const { countryRegion, locality } = queryString.parse(queryParams || '');
   const name = faker.company.companyName();
 
   return {
@@ -27,8 +27,8 @@ export const getRestaurantBriefData = (queryParams: string): RestaurantBriefData
     priceRange: sample(['cheap', 'medium', 'expensive'])!,
     slug: createSlug(name),
     address: {
-      countryRegion: countryRegion as string,
-      locality: locality as string,
+      countryRegion: countryRegion ? (countryRegion as string) : faker.address.country(),
+      locality: locality ? (locality as string) : faker.address.cityName(),
     },
     reviews: {
       avg:
@@ -58,3 +58,15 @@ export const getRestaurantsBriefData = (queryParams: string): RestaurantBriefDat
   new Array(faker.datatype.number(MAX_RESTAURANTS_QTY))
     .fill(null)
     .map(() => getRestaurantBriefData(queryParams));
+
+export const getRestaurantDataByBriefData = ({
+  address,
+  ...briefData
+}: RestaurantBriefData): RestaurantData => ({
+  ...briefData,
+  address: {
+    ...address,
+    addressLine: faker.address.streetAddress(),
+    postalCode: faker.address.zipCode(),
+  },
+});

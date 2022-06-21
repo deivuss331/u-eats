@@ -6,6 +6,7 @@ export interface AppConfig {
     urls: {
       getLocationsByQuery: (q: string) => string;
       getRestaurantsByParsedBingLocation: () => string;
+      getRestaurantData: (id: string) => string;
     };
   };
   reactQuery: {
@@ -93,15 +94,31 @@ export interface ApiPrice {
 }
 
 export interface RestaurantBriefData {
+  id: RestaurantData['id'];
+  name: RestaurantData['name'];
+  coverImg: RestaurantData['coverImg'];
+  priceRange: RestaurantData['priceRange'];
+  slug: RestaurantData['slug'];
+  address: {
+    countryRegion: RestaurantData['address']['countryRegion'];
+    locality: RestaurantData['address']['locality'];
+  };
+  reviews: {
+    avg: RestaurantData['reviews']['avg'];
+  };
+  delivery: {
+    fee: RestaurantData['delivery']['fee'];
+    durationInMinutes: RestaurantData['delivery']['durationInMinutes'];
+  };
+}
+
+export interface RestaurantData {
   id: string;
   name: string;
   coverImg: string;
   priceRange: RestaurantPriceRange;
   slug: string;
-  address: {
-    countryRegion: NonNullable<ParsedBingLocation['countryRegion']>;
-    locality: NonNullable<ParsedBingLocation['locality']>;
-  };
+  address: Required<NonNullable<ParsedBingLocation>>;
   reviews: {
     avg: number;
   };

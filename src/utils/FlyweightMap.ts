@@ -29,4 +29,8 @@ export default class FlyweightMap<TKey, TValue> {
   public setItem(key: TKey, value: TValue) {
     this._map.set(key, value);
   }
+
+  public getMap() {
+    return this._map;
+  }
 }

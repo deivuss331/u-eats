@@ -17,7 +17,7 @@ const routes: AppRoute[] = [
     component: lazy(() => import(/* webpackChunkName: 'BrowseRestaurants' */ 'views/BrowseRestaurants')),
   },
   {
-    path: appPaths.restaurantReader('*'),
+    path: appPaths.restaurantReader(':id'),
     component: lazy(() => import(/* webpackChunkName: 'RestaurantReader' */ 'views/RestaurantReader')),
   },
 ];

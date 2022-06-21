@@ -10,6 +10,7 @@ const config: AppConfig = {
     urls: {
       getLocationsByQuery: (q) => `http://dev.virtualearth.net/REST/v1/Locations/${q}`,
       getRestaurantsByParsedBingLocation: () => getBaseApiUrlEndPoint('restaurants'),
+      getRestaurantData: (id) => getBaseApiUrlEndPoint(`restaurant/${id}`),
     },
   },
   reactQuery: {
