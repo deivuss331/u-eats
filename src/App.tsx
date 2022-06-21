@@ -3,11 +3,12 @@ import AppProviders from 'providers/AppProviders';
 import { Header, Footer } from 'modules';
 import { ScrollTopOnPathChange } from 'ui/helpers';
 import routes, { appPaths } from 'routes';
+import { APP_HOMEPAGE } from 'config/constants';
 
 function App(): JSX.Element {
   return (
     <AppProviders>
-      <Router>
+      <Router basename={APP_HOMEPAGE}>
         <ScrollTopOnPathChange />
         <Header />
         <Routes>

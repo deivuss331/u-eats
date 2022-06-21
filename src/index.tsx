@@ -2,16 +2,17 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from 'App';
 import config from 'config';
+import { APP_HOMEPAGE } from 'config/constants';
 import 'i18n';
 
 if (config.api.useMocks) {
-  if (window.location.pathname === '/u-eats') {
-    window.location.pathname = '/u-eats/';
+  if (window.location.pathname === APP_HOMEPAGE) {
+    window.location.pathname = `${APP_HOMEPAGE}/`;
   }
 
   require('./mocks/browser').default.start({
     serviceWorker: {
-      url: '/u-eats/mockServiceWorker.js',
+      url: `${APP_HOMEPAGE}/mockServiceWorker.js`,
     },
     onUnhandledRequest: 'bypass', // Hide warnings about unhandled (by MSW) requests
   });
