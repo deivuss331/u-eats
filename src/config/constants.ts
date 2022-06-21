@@ -1,3 +1,5 @@
+export const APP_HOMEPAGE: string = '/u-eats' as const;
+
 export const ENVIRONMENTS = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
