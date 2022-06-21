@@ -98,6 +98,10 @@ export interface RestaurantBriefData {
   coverImg: string;
   priceRange: RestaurantPriceRange;
   slug: string;
+  address: {
+    countryRegion: NonNullable<ParsedBingLocation['countryRegion']>;
+    locality: NonNullable<ParsedBingLocation['locality']>;
+  };
   reviews: {
     avg: number;
   };
