@@ -1,5 +1,7 @@
 # 🍕 U-Eats
 
+[![🚀 Deploy on Github Pages](https://github.com/deivuss331/u-eats/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/deivuss331/u-eats/actions/workflows/deploy-gh-pages.yml)
+
 App inspired by Uber Eats.
 
 ---
