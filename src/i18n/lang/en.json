@@ -26,6 +26,7 @@
     "Cheap": "Cheap",
     "Price range": "Price range",
     "No results found...": "No results found...",
-    "Couldn't fetch restaurants...": "Couldn't fetch restaurants..."
+    "Couldn't fetch restaurants...": "Couldn't fetch restaurants...",
+    "See {{restaurant}}'s menu": "See {{restaurant}}'s menu"
   }
 }

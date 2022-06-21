@@ -21,6 +21,7 @@ export interface AppRoute {
 export interface AppPaths {
   root: () => string;
   browseRestaurants: () => string;
+  restaurantReader: (slug: string) => string;
 }
 
 export interface ComponentCommonProps {
@@ -96,6 +97,7 @@ export interface RestaurantBriefData {
   name: string;
   coverImg: string;
   priceRange: RestaurantPriceRange;
+  slug: string;
   reviews: {
     avg: number;
   };

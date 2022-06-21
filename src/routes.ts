@@ -4,6 +4,7 @@ import type { AppRoute, AppPaths } from 'types';
 export const appPaths: AppPaths = {
   root: () => '/',
   browseRestaurants: () => '/browse-restaurants',
+  restaurantReader: (slug) => `/restaurant/${slug}`,
 };
 
 const routes: AppRoute[] = [
@@ -14,6 +15,10 @@ const routes: AppRoute[] = [
   {
     path: appPaths.browseRestaurants(),
     component: lazy(() => import(/* webpackChunkName: 'BrowseRestaurants' */ 'views/BrowseRestaurants')),
+  },
+  {
+    path: appPaths.restaurantReader('*'),
+    component: lazy(() => import(/* webpackChunkName: 'RestaurantReader' */ 'views/RestaurantReader')),
   },
 ];
 

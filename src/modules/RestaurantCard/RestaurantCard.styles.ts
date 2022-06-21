@@ -1,5 +1,16 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { H5 } from 'ui/typography';
+
+export const StyledLink = styled(Link)`
+  display: block;
+
+  &,
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+`;
 
 export const StyledImage = styled.img`
   width: 100%;
