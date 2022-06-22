@@ -1,4 +1,5 @@
 import type { DefaultOptions } from 'react-query';
+import { RestaurantMenuPositionTypes, WeekDays } from 'config/constants';
 
 export interface AppConfig {
   api: {
@@ -93,6 +94,13 @@ export interface ApiPrice {
   currency: string;
 }
 
+export interface ApiHours {
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
+}
+
 export interface RestaurantBriefData {
   id: RestaurantData['id'];
   name: RestaurantData['name'];
@@ -129,6 +137,21 @@ export interface RestaurantData {
       max: number;
     };
   };
+  opens: {
+    days: Record<WeekDays, boolean>;
+    hours: {
+      from: ApiHours;
+      to: ApiHours;
+    };
+  };
+  menu: RestaurantDish[];
+}
+
+export interface RestaurantDish {
+  id: string;
+  name: string;
+  type: RestaurantMenuPositionTypes;
+  price: ApiPrice;
 }
 
 /**

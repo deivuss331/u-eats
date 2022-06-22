@@ -1,11 +1,33 @@
 import { sample } from 'lodash-es';
 import queryString from 'query-string';
 import faker from 'mocks/faker-client';
-import type { RestaurantBriefData, RestaurantData } from 'types';
 import { getRestaurantCoverImageUrl, createSlug } from 'mocks/utils';
 import { CURRENCY } from 'mocks/constants';
+import { RestaurantMenuPositionTypes, WeekDays } from 'config/constants';
+import type { RestaurantBriefData, RestaurantData, RestaurantDish, ApiPrice } from 'types';
 
 const CENTS_IN_DOLLAR: number = 100;
+
+export const getApiPrice = (minInCents: number, maxInCents: number): ApiPrice => ({
+  currency: CURRENCY,
+  amountInCents: faker.datatype.number(maxInCents - minInCents) + minInCents,
+});
+
+const MIN_RESTAURANT_DISH_PRICE_IN_CENTS: number = 10 * CENTS_IN_DOLLAR;
+const MAX_RESTAURANT_DISH_PRICE_IN_CENTS: number = 50 * CENTS_IN_DOLLAR;
+
+export const getRestaurantDish = (): RestaurantDish => ({
+  id: faker.datatype.uuid(),
+  name: faker.commerce.productName(),
+  type: sample([
+    RestaurantMenuPositionTypes.BURGER,
+    RestaurantMenuPositionTypes.SOUP,
+    RestaurantMenuPositionTypes.PIZZA,
+    RestaurantMenuPositionTypes.THAI,
+    RestaurantMenuPositionTypes.VEGETARIAN,
+  ])!,
+  price: getApiPrice(MIN_RESTAURANT_DISH_PRICE_IN_CENTS, MAX_RESTAURANT_DISH_PRICE_IN_CENTS),
+});
 
 const MIN_DELIVERY_FEE_IN_CENTS: number = 5 * CENTS_IN_DOLLAR;
 const MAX_DELIVERY_FEE_IN_CENTS: number = 10 * CENTS_IN_DOLLAR;
@@ -38,12 +60,7 @@ export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefDat
         ) * 0.5,
     },
     delivery: {
-      fee: {
-        currency: CURRENCY,
-        amountInCents:
-          faker.datatype.number(MAX_DELIVERY_FEE_IN_CENTS - MIN_DELIVERY_FEE_IN_CENTS) +
-          MIN_DELIVERY_FEE_IN_CENTS,
-      },
+      fee: getApiPrice(MIN_DELIVERY_FEE_IN_CENTS, MAX_DELIVERY_FEE_IN_CENTS),
       durationInMinutes: {
         min: faker.datatype.number(10) + MIN_DELIVERY_DURATION_IN_MINUTES,
         max: MAX_DELIVERY_DURATION_IN_MINUTES - faker.datatype.number(10),
@@ -53,6 +70,8 @@ export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefDat
 };
 
 const MAX_RESTAURANTS_QTY: number = 100;
+
+const MAX_MENU_POSITIONS_PER_RESTAURANT: number = 50;
 
 export const getRestaurantsBriefData = (queryParams: string): RestaurantBriefData[] =>
   new Array(faker.datatype.number(MAX_RESTAURANTS_QTY))
@@ -69,4 +88,30 @@ export const getRestaurantDataByBriefData = ({
     addressLine: faker.address.streetAddress(),
     postalCode: faker.address.zipCode(),
   },
+  opens: {
+    days: {
+      [WeekDays.SUNDAY]: faker.datatype.boolean(),
+      [WeekDays.MONDAY]: true,
+      [WeekDays.TUESDAY]: true,
+      [WeekDays.WEDNESDAY]: true,
+      [WeekDays.THURSDAY]: true,
+      [WeekDays.FRIDAY]: true,
+      [WeekDays.SATURDAY]: faker.datatype.boolean(),
+    },
+    hours: {
+      from: {
+        hours: faker.datatype.number(4) + 8,
+        minutes: faker.datatype.boolean() ? 0 : 30,
+        seconds: 0,
+        milliseconds: 0,
+      },
+      to: {
+        hours: faker.datatype.number(6) + 16,
+        minutes: faker.datatype.boolean() ? 0 : 30,
+        seconds: 0,
+        milliseconds: 0,
+      },
+    },
+  },
+  menu: new Array(faker.datatype.number(MAX_MENU_POSITIONS_PER_RESTAURANT)).fill(null).map(getRestaurantDish),
 });

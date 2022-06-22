@@ -12,3 +12,23 @@ export enum AppLang {
 }
 
 export const DEFAULT_LANG: AppLang = AppLang.EN as const;
+
+// WeekDays values have to match date-fns days
+// https://date-fns.org/v2.28.0/docs/getDay
+export enum WeekDays {
+  SUNDAY,
+  MONDAY,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY,
+}
+
+export enum RestaurantMenuPositionTypes {
+  PIZZA,
+  BURGER,
+  SOUP,
+  THAI,
+  VEGETARIAN,
+}
