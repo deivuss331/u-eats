@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import faker from 'mocks/faker-client';
 import { getRestaurantCoverImageUrl, createSlug } from 'mocks/utils';
 import { CURRENCY } from 'mocks/constants';
-import { RestaurantMenuPositionTypes, WeekDays } from 'config/constants';
+import { RestaurantDishTypes, WeekDays } from 'config/constants';
 import type { RestaurantBriefData, RestaurantData, RestaurantDish, ApiPrice } from 'types';
 
 const CENTS_IN_DOLLAR: number = 100;
@@ -20,11 +20,11 @@ export const getRestaurantDish = (): RestaurantDish => ({
   id: faker.datatype.uuid(),
   name: faker.commerce.productName(),
   type: sample([
-    RestaurantMenuPositionTypes.BURGER,
-    RestaurantMenuPositionTypes.SOUP,
-    RestaurantMenuPositionTypes.PIZZA,
-    RestaurantMenuPositionTypes.THAI,
-    RestaurantMenuPositionTypes.VEGETARIAN,
+    RestaurantDishTypes.BURGER,
+    RestaurantDishTypes.SOUP,
+    RestaurantDishTypes.PIZZA,
+    RestaurantDishTypes.THAI,
+    RestaurantDishTypes.VEGETARIAN,
   ])!,
   price: getApiPrice(MIN_RESTAURANT_DISH_PRICE_IN_CENTS, MAX_RESTAURANT_DISH_PRICE_IN_CENTS),
 });

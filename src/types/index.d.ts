@@ -1,5 +1,5 @@
 import type { DefaultOptions } from 'react-query';
-import { RestaurantMenuPositionTypes, WeekDays } from 'config/constants';
+import { RestaurantDishTypes, WeekDays } from 'config/constants';
 
 export interface AppConfig {
   api: {
@@ -38,6 +38,15 @@ export type RestaurantPriceRange = 'cheap' | 'medium' | 'expensive';
 export interface RestaurantsFiltersFormPayload {
   sortBy?: 'reviewsAsc' | 'reviewsDesc' | 'fastestDelivery' | 'slowestDelivery';
   priceRange?: RestaurantPriceRange;
+}
+
+export interface RestaurantDishInBasket {
+  dishId: string;
+  restaurantId: string;
+  name: RestaurantDish['name'];
+  type: RestaurantDish['type'];
+  price: RestaurantDish['price'];
+  quantity: number;
 }
 
 /**
@@ -150,7 +159,7 @@ export interface RestaurantData {
 export interface RestaurantDish {
   id: string;
   name: string;
-  type: RestaurantMenuPositionTypes;
+  type: RestaurantDishTypes;
   price: ApiPrice;
 }
 

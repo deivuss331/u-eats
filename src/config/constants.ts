@@ -25,7 +25,7 @@ export enum WeekDays {
   SATURDAY,
 }
 
-export enum RestaurantMenuPositionTypes {
+export enum RestaurantDishTypes {
   PIZZA,
   BURGER,
   SOUP,
