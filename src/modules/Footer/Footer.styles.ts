@@ -6,7 +6,7 @@ export const StyledFooter = styled.footer`
   margin-top: auto;
   background: ${({ theme }) => theme.color.black};
   color: ${({ theme }) => theme.color.white};
-  padding: ${({ theme }) => theme.space[10]} 0;
+  padding: ${({ theme }) => theme.space[10]} 0 calc(2 * ${({ theme }) => theme.space[10]});
 `;
 
 export const StyledContainer = styled(Container)`

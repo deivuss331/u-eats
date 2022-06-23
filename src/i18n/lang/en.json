@@ -28,6 +28,9 @@
     "No results found...": "No results found...",
     "Couldn't fetch restaurants...": "Couldn't fetch restaurants...",
     "See {{restaurant}}'s menu": "See {{restaurant}}'s menu",
-    "Items: {{qty}}": "Items: {{qty}}"
+    "Items: {{qty}}": "Items: {{qty}}",
+    "To pay: {{amount}}": "To pay: {{amount}}",
+    "Item already in basket": "Item already in basket",
+    "Go to basket": "Go to basket"
   }
 }

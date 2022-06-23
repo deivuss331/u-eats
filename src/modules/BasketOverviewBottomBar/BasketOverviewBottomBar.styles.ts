@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { H4 } from 'ui/typography';
+import { H6 } from 'ui/typography';
+import { Container } from 'ui/layout';
 
 export const StyledMotionWrapper = styled(motion.div)`
   position: fixed;
@@ -14,9 +15,20 @@ export const StyledMotionWrapper = styled(motion.div)`
   padding: ${({ theme }) => theme.space[4]} 0;
 `;
 
-export const StyledHeadline = styled(H4)`
+export const StyledContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.space[4]};
+`;
+
+export const StyledHeadline = styled(H6)`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.space[3]};
   margin: 0;
+`;
+
+export const StyledHeadlineGridWrapper = styled.span`
+  display: grid;
 `;

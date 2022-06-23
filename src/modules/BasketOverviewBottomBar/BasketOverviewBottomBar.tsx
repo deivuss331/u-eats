@@ -1,9 +1,14 @@
 import FastFoodIcon from '@mui/icons-material/Fastfood';
 import { useTranslation } from 'react-i18next';
 import { useBasketController, useBasketHelper } from 'hooks';
+import { Button } from 'ui/form';
 import { RenderIf } from 'ui/helpers';
-import { Container } from 'ui/layout';
-import { StyledMotionWrapper, StyledHeadline } from './BasketOverviewBottomBar.styles';
+import {
+  StyledMotionWrapper,
+  StyledHeadline,
+  StyledHeadlineGridWrapper,
+  StyledContainer,
+} from './BasketOverviewBottomBar.styles';
 
 function BasketOverviewBottomBar(): JSX.Element {
   const { t } = useTranslation();
@@ -16,17 +21,19 @@ function BasketOverviewBottomBar(): JSX.Element {
 
   // WCAG: Render text content only if isVisible - it will prevent bugs with screen readers
   return (
-    <StyledMotionWrapper animate={{ translateY: isVisible ? '0%' : '100%' }}>
-      <Container>
-        <RenderIf isTrue={isVisible}>
+    <StyledMotionWrapper animate={{ translateY: isVisible ? '0%' : '100%' }} initial={false}>
+      <RenderIf isTrue={isVisible}>
+        <StyledContainer>
           <StyledHeadline>
             <FastFoodIcon />
-            <span>
-              {t('Items: {{qty}}', { qty: order.length })}, {totalValue.humanFriendly}
-            </span>
+            <StyledHeadlineGridWrapper>
+              <span>{t('To pay: {{amount}}', { amount: totalValue.humanFriendly })}</span>
+              <span>{t('Items: {{qty}}', { qty: order.length })}</span>
+            </StyledHeadlineGridWrapper>
           </StyledHeadline>
-        </RenderIf>
-      </Container>
+          <Button type="button">{t('Go to basket')}</Button>
+        </StyledContainer>
+      </RenderIf>
     </StyledMotionWrapper>
   );
 }
