@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { RestaurantBriefData } from 'types';
-import { transformApiPrice } from 'utils';
+import { getHumanFriendlyPrice } from 'utils/apiPriceUtils';
 import {
   StyledWrapper,
   StyledDeliveryDiningIcon,
@@ -15,7 +15,7 @@ function RestaurantCardDeliveryInfo({ fee, durationInMinutes }: Props): JSX.Elem
   return (
     <StyledWrapper title={t('Delivery')}>
       <StyledDeliveryDiningIcon />
-      <span>{transformApiPrice(fee)}</span>
+      <span>{getHumanFriendlyPrice(fee)}</span>
       <StyledDurationTime>
         &nbsp;•&nbsp;{durationInMinutes.min} - {durationInMinutes.max} {t('min')}
       </StyledDurationTime>

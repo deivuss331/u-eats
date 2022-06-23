@@ -5,6 +5,7 @@ export interface AppConfig {
   api: {
     useMocks: boolean;
     urls: {
+      getApiAppConfig: () => string;
       getLocationsByQuery: (q: string) => string;
       getRestaurantsByParsedBingLocation: () => string;
       getRestaurantData: (id: string) => string;
@@ -64,6 +65,10 @@ export interface PageableResponse<T> {
   content: T[];
 }
 
+export interface ApiAppConfig {
+  currency: string;
+}
+
 export type BingConfidence = 'High' | 'Medium' | 'Low';
 
 export interface BingLocations {
@@ -98,10 +103,7 @@ export interface ParsedBingLocation {
 
 export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
 
-export interface ApiPrice {
-  amountInCents: number;
-  currency: string;
-}
+export type ApiPrice = number;
 
 export interface ApiHours {
   hours: number;

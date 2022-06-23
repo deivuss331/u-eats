@@ -23,6 +23,7 @@ export const theme: DefaultTheme = {
     header: 50,
     popup: 5,
     heroImage: -1,
+    basketOverviewBar: 3,
   },
   color: {
     [Colors.BLACK]: '#090910',
@@ -37,6 +38,7 @@ export const theme: DefaultTheme = {
   boxShadow: {
     header: '0 3px 6px rgb(0 0 0 / 10%)',
     popup: '0 5px 10px rgba(0,0,0, 0.23)',
+    basketOverviewBar: '0 -5px 10px rgb(0 0 0 / 10%)',
   },
   space: {
     1: '5px',

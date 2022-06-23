@@ -5,3 +5,4 @@ export { default as Footer } from './Footer';
 export { default as RestaurantCard } from './RestaurantCard';
 export { default as RestaurantsList } from './RestaurantsList';
 export { default as RestaurantsFilters } from './RestaurantsFilters';
+export { default as BasketOverviewBottomBar } from './BasketOverviewBottomBar';

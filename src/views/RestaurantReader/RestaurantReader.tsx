@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useBasketController } from 'hooks';
 import { useGetRestaurantData } from 'hooks/api';
 import { MainContent, Container } from 'ui/layout';
 import { IconAvgReview } from 'ui/icons';
@@ -7,6 +8,7 @@ import { StyledHeroImage, StyledHeroWrapper, StyledTopBar, StyledHeadline } from
 function RestaurantReader(): JSX.Element {
   const { id = '' } = useParams();
   const { data } = useGetRestaurantData({ id });
+  const { addOrderDish } = useBasketController();
 
   return (
     <MainContent>
@@ -20,8 +22,14 @@ function RestaurantReader(): JSX.Element {
               <StyledHeadline>{data.name}</StyledHeadline>
               <IconAvgReview>{data.reviews.avg}</IconAvgReview>
             </StyledTopBar>
-            {data.menu.map(({ id: dishId, name }) => (
-              <p key={dishId}>{name}</p>
+            {data.menu.map(({ id: dishId, name, ...dish }) => (
+              <button
+                type="button"
+                onClick={() => addOrderDish({ dishId, restaurantId: id, name, quantity: 1, ...dish })}
+                key={dishId}
+              >
+                {name}
+              </button>
             ))}
           </Container>
         </>

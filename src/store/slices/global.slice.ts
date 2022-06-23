@@ -1,10 +1,15 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { AppLang } from 'config/constants';
+import type { ApiAppConfig } from 'types';
 import i18n from 'i18n';
 
-interface GlobalState {
-  appLang: AppLang;
+interface GlobalState extends Partial<ApiAppConfig> {
+  lang: AppLang;
+  appState: {
+    isReady: boolean;
+    isError: boolean;
+  };
 }
 
 interface ChangeAppLangActionPayload {
@@ -12,7 +17,12 @@ interface ChangeAppLangActionPayload {
 }
 
 const initialState: GlobalState = {
-  appLang: i18n.language as AppLang,
+  currency: undefined,
+  lang: i18n.language as AppLang,
+  appState: {
+    isReady: false,
+    isError: false,
+  },
 };
 
 export const globalSlice = createSlice({
@@ -21,8 +31,18 @@ export const globalSlice = createSlice({
   reducers: {
     /* eslint-disable no-param-reassign */
     changeAppLang: (state, { payload: { appLang } }: PayloadAction<ChangeAppLangActionPayload>) => {
-      state.appLang = appLang;
+      state.lang = appLang;
       i18n.changeLanguage(appLang);
+    },
+    setGlobalState: (
+      state,
+      {
+        payload: { currency, isReady, isError },
+      }: PayloadAction<Partial<ApiAppConfig> & { isReady: boolean; isError: boolean }>,
+    ) => {
+      state.currency = currency;
+      state.appState.isReady = isReady;
+      state.appState.isError = isError;
     },
     /* eslint-enable */
   },

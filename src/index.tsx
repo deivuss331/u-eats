@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import AppProviders from 'providers/AppProviders';
 import App from 'App';
 import config from 'config';
 import { APP_HOMEPAGE } from 'config/constants';
@@ -20,6 +21,8 @@ if (config.api.useMocks) {
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <AppProviders>
+      <App />
+    </AppProviders>
   </React.StrictMode>,
 );

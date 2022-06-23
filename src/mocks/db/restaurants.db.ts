@@ -1,17 +1,17 @@
 import { sample } from 'lodash-es';
 import queryString from 'query-string';
+import Decimal from 'decimal.js-light';
 import faker from 'mocks/faker-client';
 import { getRestaurantCoverImageUrl, createSlug } from 'mocks/utils';
-import { CURRENCY } from 'mocks/constants';
 import { RestaurantDishTypes, WeekDays } from 'config/constants';
 import type { RestaurantBriefData, RestaurantData, RestaurantDish, ApiPrice } from 'types';
 
 const CENTS_IN_DOLLAR: number = 100;
 
-export const getApiPrice = (minInCents: number, maxInCents: number): ApiPrice => ({
-  currency: CURRENCY,
-  amountInCents: faker.datatype.number(maxInCents - minInCents) + minInCents,
-});
+export const getApiPrice = (minInCents: number, maxInCents: number): ApiPrice =>
+  new Decimal(faker.datatype.number(maxInCents - minInCents) + minInCents)
+    .dividedBy(CENTS_IN_DOLLAR)
+    .toNumber();
 
 const MIN_RESTAURANT_DISH_PRICE_IN_CENTS: number = 10 * CENTS_IN_DOLLAR;
 const MAX_RESTAURANT_DISH_PRICE_IN_CENTS: number = 50 * CENTS_IN_DOLLAR;
