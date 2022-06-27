@@ -13,6 +13,7 @@ const useBasketHelper = () => {
   );
 
   return {
+    basketItemsQty: order.length,
     totalValue: {
       cents: totalValueInCents,
       humanFriendly: getHumanFriendlyPrice(totalValueInCents),

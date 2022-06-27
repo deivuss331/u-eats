@@ -5,12 +5,14 @@ import type { CustomerDetailsWithDeliveryAddress } from 'types';
 import { DeliveryLocationFormFields, CustomerDetailsFormFields } from 'modules';
 import { Container, MainContent } from 'ui/layout';
 import { Button } from 'ui/form';
-import { useHandleOrderSubmit } from './hooks';
+import { useHandleOrderSubmit, useRedirectIfBasketIsEmpty } from './hooks';
 
 function Basket(): JSX.Element {
   const { t } = useTranslation();
   const { handleSubmit, formState, ...formMethods } = useForm<CustomerDetailsWithDeliveryAddress>();
   const handleOrderSubmit = useHandleOrderSubmit();
+
+  useRedirectIfBasketIsEmpty();
 
   return (
     <Container>
