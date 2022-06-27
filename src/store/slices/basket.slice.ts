@@ -42,6 +42,10 @@ export const basketSlice = createSlice({
       state.order = filterDishes(state.order);
       orderSessionStorage.setValue(state.order);
     },
+    clearBasket: (state) => {
+      state.order = [];
+      orderSessionStorage.setValue(state.order);
+    },
     /* eslint-enable */
   },
 });

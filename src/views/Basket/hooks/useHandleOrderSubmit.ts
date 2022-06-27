@@ -3,12 +3,14 @@ import type { StripeCardElement } from '@stripe/stripe-js';
 import type { CustomerDetailsWithDeliveryAddress } from 'types';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'hooks';
+import { useAppSelector, useAppDispatch } from 'hooks';
 import { usePostNewOrder } from 'hooks/api';
 import { ENVIRONMENTS } from 'config/constants';
+import { actions } from 'store/slices/basket.slice';
 
 const useHandleOrderSubmit = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const stripe = useStripe();
   const elements = useElements();
   const {
@@ -33,12 +35,14 @@ const useHandleOrderSubmit = () => {
 
     try {
       await mutateAsync({ paymentMethod, order, customer });
-      console.log('success');
+      toast.success(t('Thank you! Your order has been placed!'));
     } catch (err) {
-      console.log('error');
+      toast.error(t('Something went wrong... Please try again later'));
       if (process.env.NODE_ENV !== ENVIRONMENTS.PRODUCTION) {
         console.log(err);
       }
+    } finally {
+      dispatch(actions.clearBasket());
     }
   };
 };
