@@ -6,3 +6,5 @@ export { default as RestaurantCard } from './RestaurantCard';
 export { default as RestaurantsList } from './RestaurantsList';
 export { default as RestaurantsFilters } from './RestaurantsFilters';
 export { default as BasketOverviewBottomBar } from './BasketOverviewBottomBar';
+export { default as DeliveryLocationFormFields } from './DeliveryLocationFormFields';
+export { default as CustomerDetailsFormFields } from './CustomerDetailsFormFields';

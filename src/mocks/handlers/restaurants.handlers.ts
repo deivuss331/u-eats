@@ -63,6 +63,10 @@ const handlers: MockedRestHandlerType[] = [
       ctx.json(restaurantsDataMap.create(restaurantBriefData)),
     );
   }),
+
+  rest.post(config.api.urls.postNewOrder(), (req, res, ctx) =>
+    res(ctx.status(202), ctx.delay(getResponseDelay())),
+  ),
 ];
 
 export default handlers;

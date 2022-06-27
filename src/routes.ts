@@ -5,6 +5,7 @@ export const appPaths: AppPaths = {
   root: () => '/',
   browseRestaurants: () => '/browse-restaurants',
   restaurantReader: (slug) => `/restaurant/${slug}`,
+  basket: () => `/basket`,
 };
 
 const routes: AppRoute[] = [
@@ -19,6 +20,10 @@ const routes: AppRoute[] = [
   {
     path: appPaths.restaurantReader(':id'),
     component: lazy(() => import(/* webpackChunkName: 'RestaurantReader' */ 'views/RestaurantReader')),
+  },
+  {
+    path: appPaths.basket(),
+    component: lazy(() => import(/* webpackChunkName: 'Basket' */ 'views/Basket')),
   },
 ];
 

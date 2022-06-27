@@ -5,8 +5,10 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider as StoreProvider } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
+import { Elements } from '@stripe/react-stripe-js';
 import { GlobalStyle, theme, muiTheme } from 'theme';
 import { ScreenSizeLoader } from 'ui/layout';
+import { stripe } from 'services';
 import store from 'store';
 import config from 'config';
 
@@ -30,22 +32,24 @@ function AppProviders({ children }: AppProvidersProps): JSX.Element {
         />
       </Helmet>
       <StoreProvider store={store}>
-        <ThemeProvider theme={theme}>
-          <MuiThemeProvider theme={muiTheme}>
-            <QueryClientProvider client={queryClient}>
-              <GlobalStyle />
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  style: {
-                    borderRadius: theme.borderRadius.base,
-                  },
-                }}
-              />
-              <Suspense fallback={<ScreenSizeLoader />}>{children}</Suspense>
-            </QueryClientProvider>
-          </MuiThemeProvider>
-        </ThemeProvider>
+        <Elements stripe={stripe}>
+          <ThemeProvider theme={theme}>
+            <MuiThemeProvider theme={muiTheme}>
+              <QueryClientProvider client={queryClient}>
+                <GlobalStyle />
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    style: {
+                      borderRadius: theme.borderRadius.base,
+                    },
+                  }}
+                />
+                <Suspense fallback={<ScreenSizeLoader />}>{children}</Suspense>
+              </QueryClientProvider>
+            </MuiThemeProvider>
+          </ThemeProvider>
+        </Elements>
       </StoreProvider>
     </HelmetProvider>
   );

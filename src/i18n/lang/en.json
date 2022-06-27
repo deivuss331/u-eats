@@ -31,6 +31,16 @@
     "Items: {{qty}}": "Items: {{qty}}",
     "To pay: {{amount}}": "To pay: {{amount}}",
     "Item already in basket": "Item already in basket",
-    "Go to basket": "Go to basket"
+    "Go to basket": "Go to basket",
+    "Please type": "Please type",
+    "Address line": "Address line",
+    "City/Town": "City/Town",
+    "Post code": "Post code",
+    "Country": "Country",
+    "Order and pay": "Order and pay",
+    "Your credit card details seems to be invalid": "Your credit card details seems to be invalid",
+    "First name": "First name",
+    "Last name": "Last name",
+    "E-mail": "E-mail"
   }
 }

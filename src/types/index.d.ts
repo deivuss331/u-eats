@@ -1,4 +1,5 @@
 import type { DefaultOptions } from 'react-query';
+import type { PaymentMethod } from '@stripe/stripe-js';
 import { RestaurantDishTypes, WeekDays } from 'config/constants';
 
 export interface AppConfig {
@@ -9,6 +10,7 @@ export interface AppConfig {
       getLocationsByQuery: (q: string) => string;
       getRestaurantsByParsedBingLocation: () => string;
       getRestaurantData: (id: string) => string;
+      postNewOrder: () => string;
     };
   };
   reactQuery: {
@@ -25,6 +27,7 @@ export interface AppPaths {
   root: () => string;
   browseRestaurants: () => string;
   restaurantReader: (slug: string) => string;
+  basket: () => string;
 }
 
 export interface ComponentCommonProps {
@@ -32,7 +35,17 @@ export interface ComponentCommonProps {
   id?: string;
 }
 
-export type DeliveryAddressFormPayload = ParsedBingLocation;
+export type DeliveryAddressFormPayload = Required<NonNullable<ParsedBingLocation>>;
+
+export interface CustomerDetailsFormPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface CustomerDetailsWithDeliveryAddress extends CustomerDetailsFormPayload {
+  deliveryAddress: DeliveryAddressFormPayload;
+}
 
 export type RestaurantPriceRange = 'cheap' | 'medium' | 'expensive';
 
@@ -163,6 +176,12 @@ export interface RestaurantDish {
   name: string;
   type: RestaurantDishTypes;
   price: ApiPrice;
+}
+
+export interface NewOrder {
+  paymentMethod: PaymentMethod;
+  order: RestaurantDishInBasket[];
+  customer: CustomerDetailsWithDeliveryAddress;
 }
 
 /**

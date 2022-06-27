@@ -27,6 +27,7 @@ App inspired by Uber Eats.
 * `REACT_APP_AUTHOR_EMAIL`
 * `REACT_APP_BING_MAPS_API_KEY` - get api key [here](https://www.bingmapsportal.com/)
 * `REACT_APP_PROJECT_REPO_URL` - git repository url
+* `REACT_APP_STRIPE_PUBLISHABLE_KEY` - stripe publishable key
 
 ---
 
