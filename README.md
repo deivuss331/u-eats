@@ -9,15 +9,16 @@ App inspired by Uber Eats.
 ---
 
 #### Note:
-* recommended Node version: **18.0.0**
-* see available scripts in `package.json`
-* app works on mocked backend (msw + faker.js)
+* Recommended Node version: **18.0.0**
+* See available scripts in `package.json`
+* App works on mocked backend (msw + faker.js)
 
 ---
 
 #### Pitfalls:
 
-* missing order validation (user may order food from UK with delivery to Poland)
+* There's no real back-end. App works on mocks, so you may find weird things like "Tasty shoes" as restaurant dish name.
+* Missing order validation (user may order food from UK with delivery to Poland)
 
 ---
 
