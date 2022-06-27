@@ -3,13 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import i18n from 'i18n';
 import type { RestaurantDishInBasket } from 'types';
+import { SESSION_STORAGE_KEYS } from 'config/constants';
+import createSessionStorageController from 'utils/createSessionStorageController';
+
+type BasketOrder = RestaurantDishInBasket[];
+
+const orderSessionStorage = createSessionStorageController<BasketOrder>(SESSION_STORAGE_KEYS.ITEMS_IN_BASKET);
 
 interface BasketState {
-  order: RestaurantDishInBasket[];
+  order: BasketOrder;
 }
 
 const initialState: BasketState = {
-  order: [],
+  order: orderSessionStorage.getValue() || [],
 };
 
 export const basketSlice = createSlice({
@@ -28,12 +34,13 @@ export const basketSlice = createSlice({
       }
 
       state.order.push(restaurantDish);
+      orderSessionStorage.setValue(state.order);
     },
-    removeOrderDish: (
-      state,
-      { payload }: PayloadAction<Pick<RestaurantDishInBasket, 'dishId' | 'restaurantId'>>,
-    ) => {
-      state.order = state.order.filter(({ dishId }) => !(payload.dishId === dishId));
+    removeOrderDish: (state, { payload }: PayloadAction<Pick<RestaurantDishInBasket, 'dishId'>>) => {
+      const filterDishes = (arr: BasketOrder) => arr.filter(({ dishId }) => !(payload.dishId === dishId));
+
+      state.order = filterDishes(state.order);
+      orderSessionStorage.setValue(state.order);
     },
     /* eslint-enable */
   },

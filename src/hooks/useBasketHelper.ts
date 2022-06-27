@@ -8,7 +8,8 @@ const useBasketHelper = () => {
   } = useAppSelector((state) => state);
 
   const totalValueInCents = order.reduce<number>(
-    (totalVal, { price, quantity }) => new Decimal(price).times(quantity).add(totalVal).toNumber(),
+    (totalVal, { dish: { pricePerItem, quantity } }) =>
+      new Decimal(pricePerItem).times(quantity).add(totalVal).toNumber(),
     0,
   );
 

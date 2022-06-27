@@ -13,6 +13,10 @@ export enum AppLang {
 
 export const DEFAULT_LANG: AppLang = AppLang.EN as const;
 
+export const SESSION_STORAGE_KEYS = {
+  ITEMS_IN_BASKET: '__IIB',
+} as const;
+
 export const PRICE_SEPARATOR: '.' | ',' = ',' as const;
 
 // WeekDays values have to match date-fns days

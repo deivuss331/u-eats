@@ -55,12 +55,11 @@ export interface RestaurantsFiltersFormPayload {
 }
 
 export interface RestaurantDishInBasket {
+  dish: Omit<RestaurantDish, 'id'> & {
+    quantity: number;
+  };
   dishId: string;
   restaurantId: string;
-  name: RestaurantDish['name'];
-  type: RestaurantDish['type'];
-  price: RestaurantDish['price'];
-  quantity: number;
 }
 
 /**
@@ -175,7 +174,7 @@ export interface RestaurantDish {
   id: string;
   name: string;
   type: RestaurantDishTypes;
-  price: ApiPrice;
+  pricePerItem: ApiPrice;
 }
 
 export interface NewOrder {

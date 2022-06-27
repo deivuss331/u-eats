@@ -26,7 +26,7 @@ export const getRestaurantDish = (): RestaurantDish => ({
     RestaurantDishTypes.THAI,
     RestaurantDishTypes.VEGETARIAN,
   ])!,
-  price: getApiPrice(MIN_RESTAURANT_DISH_PRICE_IN_CENTS, MAX_RESTAURANT_DISH_PRICE_IN_CENTS),
+  pricePerItem: getApiPrice(MIN_RESTAURANT_DISH_PRICE_IN_CENTS, MAX_RESTAURANT_DISH_PRICE_IN_CENTS),
 });
 
 const MIN_DELIVERY_FEE_IN_CENTS: number = 5 * CENTS_IN_DOLLAR;

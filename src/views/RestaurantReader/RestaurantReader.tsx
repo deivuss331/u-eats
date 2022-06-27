@@ -6,8 +6,8 @@ import { IconAvgReview } from 'ui/icons';
 import { StyledHeroImage, StyledHeroWrapper, StyledTopBar, StyledHeadline } from './RestaurantReader.styles';
 
 function RestaurantReader(): JSX.Element {
-  const { id = '' } = useParams();
-  const { data } = useGetRestaurantData({ id });
+  const { id: restaurantId = '' } = useParams();
+  const { data } = useGetRestaurantData({ id: restaurantId });
   const { addOrderDish } = useBasketController();
 
   return (
@@ -22,13 +22,13 @@ function RestaurantReader(): JSX.Element {
               <StyledHeadline>{data.name}</StyledHeadline>
               <IconAvgReview>{data.reviews.avg}</IconAvgReview>
             </StyledTopBar>
-            {data.menu.map(({ id: dishId, name, ...dish }) => (
+            {data.menu.map(({ id: dishId, ...dish }) => (
               <button
                 type="button"
-                onClick={() => addOrderDish({ dishId, restaurantId: id, name, quantity: 1, ...dish })}
+                onClick={() => addOrderDish({ dish: { quantity: 1, ...dish }, dishId, restaurantId })}
                 key={dishId}
               >
-                {name}
+                {dish.name}
               </button>
             ))}
           </Container>
