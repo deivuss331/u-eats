@@ -59,6 +59,8 @@
     "Open status": "Open status",
     "Add to basket": "Add to basket",
     "Remove from basket": "Remove from basket",
-    "Average review": "Average review"
+    "Average review": "Average review",
+    "Couldn't fetch restaurant data...": "Couldn't fetch restaurant data...",
+    "Couldn't find restaurant...": "Couldn't find restaurant..."
   }
 }

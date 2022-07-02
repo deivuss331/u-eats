@@ -1,6 +1,5 @@
-import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useGetRestaurantData } from 'hooks/api';
+import type { RestaurantData } from 'types';
 import { RestaurantDishesTable } from 'modules';
 import {
   MainContent,
@@ -18,38 +17,45 @@ import {
   StyledInlineAnnotationsList,
 } from './RestaurantReader.styles';
 
-function RestaurantReader(): JSX.Element {
+type RestaurantReaderProps = RestaurantData;
+
+function RestaurantReader({
+  coverImg,
+  name,
+  reviews,
+  opens,
+  delivery,
+  address,
+  menu,
+}: RestaurantReaderProps): JSX.Element {
   const { t } = useTranslation();
-  const { id: restaurantId = '' } = useParams();
-  const { data: restaurant } = useGetRestaurantData({ id: restaurantId });
 
   return (
     <MainContent>
-      {restaurant ? (
-        <>
-          <StyledHeroWrapper>
-            <StyledHeroImage src={restaurant.coverImg} alt={restaurant.name} loading="lazy" />
-          </StyledHeroWrapper>
-          <Container>
-            <StyledTopBar>
-              <StyledHeadline>{restaurant.name}</StyledHeadline>
-              <IconAvgReview title={t('Average review')}>{restaurant.reviews.avg}</IconAvgReview>
-            </StyledTopBar>
-            <StyledInlineAnnotationsList>
-              <li>
-                <RestaurantOpenStatus {...restaurant.opens} />
-              </li>
-              <li>
-                <RestaurantDeliveryInfo {...restaurant.delivery} />
-              </li>
-              <li>
-                <RestaurantAddressInfo {...restaurant.address} />
-              </li>
-            </StyledInlineAnnotationsList>
-            <RestaurantDishesTable dishes={restaurant.menu} />
-          </Container>
-        </>
-      ) : null}
+      <StyledHeroWrapper>
+        <StyledHeroImage src={coverImg} alt={name} loading="lazy" />
+      </StyledHeroWrapper>
+
+      <Container>
+        <StyledTopBar>
+          <StyledHeadline>{name}</StyledHeadline>
+          <IconAvgReview title={t('Average review')}>{reviews.avg}</IconAvgReview>
+        </StyledTopBar>
+
+        <StyledInlineAnnotationsList>
+          <li>
+            <RestaurantOpenStatus {...opens} />
+          </li>
+          <li>
+            <RestaurantDeliveryInfo {...delivery} />
+          </li>
+          <li>
+            <RestaurantAddressInfo {...address} />
+          </li>
+        </StyledInlineAnnotationsList>
+
+        <RestaurantDishesTable dishes={menu} />
+      </Container>
     </MainContent>
   );
 }
