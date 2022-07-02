@@ -8,3 +8,4 @@ export { default as RestaurantsFilters } from './RestaurantsFilters';
 export { default as BasketOverviewBottomBar } from './BasketOverviewBottomBar';
 export { default as DeliveryLocationFormFields } from './DeliveryLocationFormFields';
 export { default as CustomerDetailsFormFields } from './CustomerDetailsFormFields';
+export { default as RestaurantDishesTable } from './RestaurantDishesTable';

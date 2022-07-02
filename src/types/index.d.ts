@@ -54,12 +54,8 @@ export interface RestaurantsFiltersFormPayload {
   priceRange?: RestaurantPriceRange;
 }
 
-export interface RestaurantDishInBasket {
-  dish: Omit<RestaurantDish, 'id'> & {
-    quantity: number;
-  };
-  dishId: string;
-  restaurantId: string;
+export interface RestaurantDishInBasket extends RestaurantDish {
+  quantity: number;
 }
 
 /**

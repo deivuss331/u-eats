@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { appPaths } from 'routes';
 import type { RestaurantBriefData, ComponentCommonProps } from 'types';
 import { IconAvgReview } from 'ui/icons';
-import { RestaurantCardDeliveryInfo } from './components';
+import { RestaurantDeliveryInfo } from 'ui/layout';
 import { StyledImage, StyledTextRow, StyledHeadline, StyledLink } from './RestaurantCard.styles';
 
 interface RestaurantCardProps extends ComponentCommonProps {
@@ -24,10 +24,10 @@ function RestaurantCard({
       <StyledImage src={coverImg} alt={name} loading="lazy" />
       <StyledTextRow>
         <StyledHeadline as="h2">{name}</StyledHeadline>
-        <IconAvgReview>{reviews.avg}</IconAvgReview>
+        <IconAvgReview title={t('Average review')}>{reviews.avg}</IconAvgReview>
       </StyledTextRow>
       <StyledTextRow>
-        <RestaurantCardDeliveryInfo {...delivery} />
+        <RestaurantDeliveryInfo {...delivery} />
       </StyledTextRow>
     </StyledLink>
   );

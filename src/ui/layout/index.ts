@@ -7,3 +7,7 @@ export { default as MainContent } from './MainContent/MainContent';
 export { default as Pagination } from './Pagination/Pagination';
 export { default as Accordion } from './Accordion/Accordion';
 export { default as Alert } from './Alert/Alert';
+export { default as RestaurantDeliveryInfo } from './RestaurantDeliveryInfo/RestaurantDeliveryInfo';
+export { default as RestaurantAddressInfo } from './RestaurantAddressInfo/RestaurantAddressInfo';
+export { default as RestaurantOpenStatus } from './RestaurantOpenStatus/RestaurantOpenStatus';
+export { default as InlineAnnotationsList } from './InlineAnnotationsList/InlineAnnotationsList';

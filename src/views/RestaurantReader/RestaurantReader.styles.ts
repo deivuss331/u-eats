@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { H1 } from 'ui/typography';
+import { InlineAnnotationsList } from 'ui/layout';
 
 export const StyledHeroWrapper = styled.div`
   position: relative;
@@ -26,8 +27,14 @@ export const StyledTopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: ${({ theme }) => theme.space[4]};
 `;
 
 export const StyledHeadline = styled(H1)`
-  margin-bottom: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+`;
+
+export const StyledInlineAnnotationsList = styled(InlineAnnotationsList)`
+  margin: ${({ theme }) => `${theme.space[1]} 0 ${theme.space[8]}`};
 `;

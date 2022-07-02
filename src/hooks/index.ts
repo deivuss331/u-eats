@@ -5,3 +5,4 @@ export { default as useDebounce } from './useDebounce';
 export { default as usePageableSearchParams } from './usePageableSearchParams';
 export { default as useBasketController } from './useBasketController';
 export { default as useBasketHelper } from './useBasketHelper';
+export { default as useRestaurantOpenStatus } from './useRestaurantOpenStatus';

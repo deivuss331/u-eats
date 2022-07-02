@@ -44,6 +44,21 @@
     "E-mail": "E-mail",
     "Thank you! Your order has been placed!": "Thank you! Your order has been placed!",
     "Something went wrong... Please try again later": "Something went wrong... Please try again later",
-    "{{price, currency}}": "{{price, currency}}"
+    "{{price, currency}}": "{{price, currency}}",
+    "Open": "Open",
+    "Closed": "Closed",
+    "Address": "Address",
+    "Price": "Price",
+    "Type": "Type",
+    "Name": "Name",
+    "Burger": "Burger 🍔",
+    "Soup": "Soup 🍜",
+    "Thai": "Thai 🍛",
+    "Pizza": "Pizza 🍕",
+    "Vegetarian": "Vegetarian 🥗",
+    "Open status": "Open status",
+    "Add to basket": "Add to basket",
+    "Remove from basket": "Remove from basket",
+    "Average review": "Average review"
   }
 }

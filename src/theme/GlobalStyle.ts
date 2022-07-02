@@ -38,13 +38,6 @@ export default createGlobalStyle<{ theme: DefaultTheme }>`
     margin: 0;
   }
   
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin-bottom: ${({ theme }) => theme.space[2]};
-  }
-  
   ul {
     padding-left: 0;
     list-style-type: none;
