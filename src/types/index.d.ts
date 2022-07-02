@@ -1,11 +1,15 @@
 import type { DefaultOptions } from 'react-query';
+import { RestaurantDishTypes, WeekDays } from 'config/constants';
 
 export interface AppConfig {
   api: {
     useMocks: boolean;
     urls: {
+      getApiAppConfig: () => string;
       getLocationsByQuery: (q: string) => string;
       getRestaurantsByParsedBingLocation: () => string;
+      getRestaurantData: (id: string) => string;
+      postNewOrder: () => string;
     };
   };
   reactQuery: {
@@ -21,6 +25,8 @@ export interface AppRoute {
 export interface AppPaths {
   root: () => string;
   browseRestaurants: () => string;
+  restaurantReader: (slug: string) => string;
+  basket: () => string;
 }
 
 export interface ComponentCommonProps {
@@ -28,13 +34,27 @@ export interface ComponentCommonProps {
   id?: string;
 }
 
-export type DeliveryAddressFormPayload = ParsedBingLocation;
+export type DeliveryAddressFormPayload = Required<NonNullable<ParsedBingLocation>>;
+
+export interface CustomerDetailsFormPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface CustomerDetailsWithDeliveryAddress extends CustomerDetailsFormPayload {
+  deliveryAddress: DeliveryAddressFormPayload;
+}
 
 export type RestaurantPriceRange = 'cheap' | 'medium' | 'expensive';
 
 export interface RestaurantsFiltersFormPayload {
   sortBy?: 'reviewsAsc' | 'reviewsDesc' | 'fastestDelivery' | 'slowestDelivery';
   priceRange?: RestaurantPriceRange;
+}
+
+export interface RestaurantDishInBasket extends RestaurantDish {
+  quantity: number;
 }
 
 /**
@@ -50,6 +70,10 @@ export interface PageableResponse<T> {
   totalPages: number;
   pageable: Pageable;
   content: T[];
+}
+
+export interface ApiAppConfig {
+  currency: string;
 }
 
 export type BingConfidence = 'High' | 'Medium' | 'Low';
@@ -86,16 +110,41 @@ export interface ParsedBingLocation {
 
 export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
 
-export interface ApiPrice {
-  amountInCents: number;
-  currency: string;
+export type ApiPrice = number;
+
+export interface ApiHours {
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
 }
 
 export interface RestaurantBriefData {
+  id: RestaurantData['id'];
+  name: RestaurantData['name'];
+  coverImg: RestaurantData['coverImg'];
+  priceRange: RestaurantData['priceRange'];
+  slug: RestaurantData['slug'];
+  address: {
+    countryRegion: RestaurantData['address']['countryRegion'];
+    locality: RestaurantData['address']['locality'];
+  };
+  reviews: {
+    avg: RestaurantData['reviews']['avg'];
+  };
+  delivery: {
+    fee: RestaurantData['delivery']['fee'];
+    durationInMinutes: RestaurantData['delivery']['durationInMinutes'];
+  };
+}
+
+export interface RestaurantData {
   id: string;
   name: string;
   coverImg: string;
   priceRange: RestaurantPriceRange;
+  slug: string;
+  address: Required<NonNullable<ParsedBingLocation>>;
   reviews: {
     avg: number;
   };
@@ -106,6 +155,26 @@ export interface RestaurantBriefData {
       max: number;
     };
   };
+  opens: {
+    days: Record<WeekDays, boolean>;
+    hours: {
+      from: ApiHours;
+      to: ApiHours;
+    };
+  };
+  menu: RestaurantDish[];
+}
+
+export interface RestaurantDish {
+  id: string;
+  name: string;
+  type: RestaurantDishTypes;
+  pricePerItem: ApiPrice;
+}
+
+export interface NewOrder {
+  order: RestaurantDishInBasket[];
+  customer: CustomerDetailsWithDeliveryAddress;
 }
 
 /**

@@ -8,8 +8,11 @@ const config: AppConfig = {
   api: {
     useMocks: true,
     urls: {
+      getApiAppConfig: () => getBaseApiUrlEndPoint('config'),
       getLocationsByQuery: (q) => `https://dev.virtualearth.net/REST/v1/Locations/${q}`,
       getRestaurantsByParsedBingLocation: () => getBaseApiUrlEndPoint('restaurants'),
+      getRestaurantData: (id) => getBaseApiUrlEndPoint(`restaurants/${id}`),
+      postNewOrder: () => getBaseApiUrlEndPoint('orders'),
     },
   },
   reactQuery: {

@@ -14,6 +14,5 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledTextSm = styled(TextSm)`
-  opacity: 0.5;
   padding-top: 3px;
 `;

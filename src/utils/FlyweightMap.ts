@@ -1,8 +1,7 @@
 type CreateItem<TKey, TValue> = (key: TKey) => TValue;
 
 export default class FlyweightMap<TKey, TValue> {
-  private _map: Map<TKey, TValue>;
-
+  private readonly _map: Map<TKey, TValue>;
   private readonly _createItem: CreateItem<TKey, TValue>;
 
   constructor(createItem: CreateItem<TKey, TValue>) {
@@ -28,5 +27,9 @@ export default class FlyweightMap<TKey, TValue> {
 
   public setItem(key: TKey, value: TValue) {
     this._map.set(key, value);
+  }
+
+  public getMap() {
+    return this._map;
   }
 }

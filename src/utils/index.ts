@@ -1,3 +1,6 @@
 export { default as filterBingLocationsByConfidence } from './filterBingLocationsByConfidence';
 export { default as FlyweightMap } from './FlyweightMap';
-export { default as transformApiPrice } from './transformApiPrice';
+export { default as createLocalStorageController } from './createLocalStorageController';
+export { default as createSessionStorageController } from './createSessionStorageController';
+
+export * as apiPriceUtils from './apiPriceUtils';

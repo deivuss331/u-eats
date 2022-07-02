@@ -14,11 +14,13 @@ declare module 'styled-components' {
       header: number;
       popup: number;
       heroImage: number;
+      basketOverviewBar: number;
     };
     color: Record<Colors, string>;
     boxShadow: {
       header: string;
       popup: string;
+      basketOverviewBar: string;
     };
     space: {
       1: string;

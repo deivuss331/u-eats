@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import { appPaths } from 'routes';
 import type { FilteredParsedBingLocation } from 'types';
 import { useAppDispatch } from 'hooks';
-import { actions } from 'store/slices/deliveryAddress.slice';
+import { actions } from 'store/slices/customerDetails.slice';
 import { TextBase } from 'ui/typography';
 import { StyledLink, StyledTextSm } from './DeliveryCitiesListItem.styles';
 import { getHeadline } from './utils';
@@ -21,7 +21,7 @@ function DeliveryCitiesListItem({ location, linkAria = {} }: DeliveryCitiesListI
     <li>
       <StyledLink
         role="option"
-        onClick={() => dispatch(actions.setFormPayload(location))}
+        onClick={() => dispatch(actions.setDeliveryAddress(location))}
         to={{
           pathname: appPaths.browseRestaurants(),
           search: queryString.stringify(location),

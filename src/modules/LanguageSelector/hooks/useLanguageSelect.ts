@@ -12,7 +12,7 @@ const useLanguageSelect = () => {
     {
       items: languages,
       itemToString: (str) => (str ? str.toUpperCase() : ''),
-      defaultSelectedItem: global.appLang,
+      defaultSelectedItem: global.lang,
     },
   );
 
