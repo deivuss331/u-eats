@@ -1,5 +1,4 @@
 import type { DefaultOptions } from 'react-query';
-import type { PaymentMethod } from '@stripe/stripe-js';
 import { RestaurantDishTypes, WeekDays } from 'config/constants';
 
 export interface AppConfig {
@@ -174,7 +173,6 @@ export interface RestaurantDish {
 }
 
 export interface NewOrder {
-  paymentMethod: PaymentMethod;
   order: RestaurantDishInBasket[];
   customer: CustomerDetailsWithDeliveryAddress;
 }

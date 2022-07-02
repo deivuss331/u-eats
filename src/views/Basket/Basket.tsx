@@ -1,4 +1,3 @@
-import { CardElement } from '@stripe/react-stripe-js';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { CustomerDetailsWithDeliveryAddress } from 'types';
@@ -34,7 +33,6 @@ function Basket(): JSX.Element {
                 countryRegion: 'deliveryAddress.countryRegion',
               }}
             />
-            <CardElement />
             <Button type="submit" loading={formState.isSubmitting}>
               {t('Order and pay')}
             </Button>
