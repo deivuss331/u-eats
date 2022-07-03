@@ -9,6 +9,7 @@ export const ENVIRONMENTS = {
 
 export enum AppLang {
   EN = 'en',
+  PL = 'pl',
 }
 
 export const DEFAULT_LANG: AppLang = AppLang.EN as const;

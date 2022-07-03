@@ -4,9 +4,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { ENVIRONMENTS, AppLang, DEFAULT_LANG } from 'config/constants';
 
 import enTranslations from 'i18n/lang/en.json';
+import plTranslations from 'i18n/lang/pl.json';
 
 export const langs = {
   [AppLang.EN]: enTranslations,
+  [AppLang.PL]: plTranslations,
 };
 
 i18n

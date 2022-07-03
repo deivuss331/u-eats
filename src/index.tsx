@@ -12,10 +12,10 @@ if (config.api.useMocks) {
   }
 
   require('./mocks/browser').default.start({
+    onUnhandledRequest: 'bypass', // Hide warnings about unhandled (by MSW) requests
     serviceWorker: {
       url: `${APP_HOMEPAGE}/mockServiceWorker.js`,
     },
-    onUnhandledRequest: 'bypass', // Hide warnings about unhandled (by MSW) requests
   });
 }
 

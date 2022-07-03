@@ -1,21 +1,13 @@
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useViewportScroll } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { LanguageSelector } from 'modules';
 import { RenderIf } from 'ui/helpers';
 import { StyledHeader, StyledContainer, StyledButtonIcon, StyledUEatsLogo } from './Header.styles';
+import { useHasVisibleBackground } from './hooks';
 
 function Header(): JSX.Element {
-  const { scrollYProgress } = useViewportScroll();
-  const [hasVisibleBackground, setHasVisibleBackground] = useState<boolean>(false);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    scrollYProgress.onChange((yProgress) => {
-      setHasVisibleBackground(yProgress > 0);
-    });
-  }, [scrollYProgress]);
+  const hasVisibleBackground = useHasVisibleBackground();
 
   const { REACT_APP_PROJECT_REPO_URL } = process.env;
 

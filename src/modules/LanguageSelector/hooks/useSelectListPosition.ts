@@ -1,5 +1,5 @@
-import { usePopper } from 'react-popper';
 import { useRef } from 'react';
+import { usePopper } from 'react-popper';
 
 const useSelectListPosition = () => {
   const buttonWrapperRef = useRef() as React.MutableRefObject<HTMLDivElement | null>;

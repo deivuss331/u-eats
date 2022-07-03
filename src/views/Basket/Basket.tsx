@@ -9,11 +9,10 @@ import { Button, FormCol } from 'ui/form';
 import { StyledForm, StyledBottomBar } from './Basket.styles';
 import { useHandleOrderSubmit, useRedirectIfBasketIsEmpty } from './hooks';
 
-function Basket(): JSX.Element {
+function Basket(): JSX.Element | null {
+  const handleOrderSubmit = useHandleOrderSubmit();
   const { t } = useTranslation();
-  const {
-    totalValue: { humanFriendly },
-  } = useBasketHelper();
+  const { totalValue } = useBasketHelper();
   const {
     customerDetails,
     basket: { order },
@@ -22,9 +21,12 @@ function Basket(): JSX.Element {
     mode: 'onChange',
     defaultValues: customerDetails,
   });
-  const handleOrderSubmit = useHandleOrderSubmit();
 
   useRedirectIfBasketIsEmpty();
+
+  if (!order.length) {
+    return null;
+  }
 
   return (
     <Container>
@@ -58,7 +60,7 @@ function Basket(): JSX.Element {
             </FormCol>
 
             <StyledBottomBar>
-              <span>{t('To pay: {{amount}}', { amount: humanFriendly })}</span>
+              <span>{t('To pay: {{amount}}', { amount: totalValue.humanFriendly })}</span>
               <Button type="submit" loading={formState.isSubmitting}>
                 {t('Place order')}
               </Button>

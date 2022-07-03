@@ -1,43 +1,26 @@
-import { useTranslation } from 'react-i18next';
 import { usePageableSearchParams } from 'hooks';
-import { useGetRestaurantsByParsedBingLocation } from 'hooks/api';
+import type { PageableResponse, RestaurantBriefData } from 'types';
 import { RestaurantsList, RestaurantsFilters } from 'modules';
-import { RestaurantsFiltersSkeleton } from 'modules/RestaurantsFilters';
-import { RestaurantsListSkeleton } from 'modules/RestaurantsList';
-import { Container, MainContent, Alert } from 'ui/layout';
+import { Container, MainContent } from 'ui/layout';
 import { StyledPagination, StyledContentGrid, StyledFiltersWrapper } from './BrowseRestaurants.styles';
 
-// import { appPaths } from 'routes';
+type BrowseRestaurantsProps = PageableResponse<RestaurantBriefData>;
 
-function BrowseRestaurants(): JSX.Element {
-  const { t } = useTranslation();
+function BrowseRestaurants({ content, totalPages }: BrowseRestaurantsProps): JSX.Element {
   const { page, setPage } = usePageableSearchParams();
-  const { data, isLoading, isError } = useGetRestaurantsByParsedBingLocation();
 
   return (
     <Container>
       <MainContent>
         <StyledContentGrid>
           <StyledFiltersWrapper>
-            {isLoading ? <RestaurantsFiltersSkeleton /> : <RestaurantsFilters />}
+            <RestaurantsFilters />
           </StyledFiltersWrapper>
 
-          {isLoading ? (
-            <RestaurantsListSkeleton />
-          ) : data?.content.length ? (
-            <div>
-              <RestaurantsList restaurants={data.content} />
-              <StyledPagination
-                count={data.totalPages}
-                page={page}
-                onChange={(_, newPage) => setPage(newPage)}
-              />
-            </div>
-          ) : isError ? (
-            <Alert severity="error">{t("Couldn't fetch restaurants...")}</Alert>
-          ) : (
-            <Alert severity="info">{t('No results found...')}</Alert>
-          )}
+          <div>
+            <RestaurantsList restaurants={content} />
+            <StyledPagination count={totalPages} page={page} onChange={(_, newPage) => setPage(newPage)} />
+          </div>
         </StyledContentGrid>
       </MainContent>
     </Container>

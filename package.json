@@ -1,6 +1,6 @@
 {
   "name": "u-eats",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Dawid Zajac <zajdawid@protonmail.com>",
   "private": true,
   "homepage": "/u-eats/",
@@ -49,7 +49,7 @@
     "start:production": "cross-env REACT_APP_CONFIG=PRODUCTION react-scripts start",
     "build": "npm run build:production",
     "build:development": "cross-env REACT_APP_CONFIG=DEVELOPMENT react-scripts build",
-    "build:production": "cross-env REACT_APP_CONFIG=PRODUCTION react-scripts build",
+    "build:production": "cross-env REACT_APP_CONFIG=PRODUCTION react-scripts build && cp build/index.html build/404.html",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --no-error-on-unmatched-pattern --fix src/**/*.{js,jsx,ts,tsx}",

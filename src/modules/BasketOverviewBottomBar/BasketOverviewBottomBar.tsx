@@ -15,10 +15,10 @@ import {
 function BasketOverviewBottomBar(): JSX.Element {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const { totalValue } = useBasketHelper();
   const {
     state: { order },
   } = useBasketController();
-  const { totalValue } = useBasketHelper();
 
   const isBasketPage: boolean = pathname === appPaths.basket();
   const hasOrderItems: boolean = Boolean(order.length);
