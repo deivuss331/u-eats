@@ -37,7 +37,7 @@
     "City/Town": "City/Town",
     "Post code": "Post code",
     "Country": "Country",
-    "Order and pay": "Order and pay",
+    "Place order": "Place order",
     "Your credit card details seems to be invalid": "Your credit card details seems to be invalid",
     "First name": "First name",
     "Last name": "Last name",
@@ -61,6 +61,8 @@
     "Remove from basket": "Remove from basket",
     "Average review": "Average review",
     "Couldn't fetch restaurant data...": "Couldn't fetch restaurant data...",
-    "Couldn't find restaurant...": "Couldn't find restaurant..."
+    "Couldn't find restaurant...": "Couldn't find restaurant...",
+    "Your order": "Your order",
+    "Delivery details": "Delivery details"
   }
 }
