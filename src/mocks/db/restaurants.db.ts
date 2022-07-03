@@ -71,12 +71,13 @@ export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefDat
 
 const MAX_RESTAURANTS_QTY: number = 100;
 
-const MAX_MENU_POSITIONS_PER_RESTAURANT: number = 50;
-
 export const getRestaurantsBriefData = (queryParams: string): RestaurantBriefData[] =>
   new Array(faker.datatype.number(MAX_RESTAURANTS_QTY))
     .fill(null)
     .map(() => getRestaurantBriefData(queryParams));
+
+const MIN_MENU_POSITIONS_PER_RESTAURANT: number = 10;
+const MAX_MENU_POSITIONS_PER_RESTAURANT: number = 50;
 
 export const getRestaurantDataByBriefData = ({
   address,
@@ -113,5 +114,10 @@ export const getRestaurantDataByBriefData = ({
       },
     },
   },
-  menu: new Array(faker.datatype.number(MAX_MENU_POSITIONS_PER_RESTAURANT)).fill(null).map(getRestaurantDish),
+  menu: new Array(
+    faker.datatype.number(MAX_MENU_POSITIONS_PER_RESTAURANT - MIN_MENU_POSITIONS_PER_RESTAURANT) +
+      MIN_MENU_POSITIONS_PER_RESTAURANT,
+  )
+    .fill(null)
+    .map(getRestaurantDish),
 });

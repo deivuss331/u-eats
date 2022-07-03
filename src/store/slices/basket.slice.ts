@@ -24,9 +24,7 @@ export const basketSlice = createSlice({
   reducers: {
     /* eslint-disable no-param-reassign */
     addOrderDish: (state, { payload: restaurantDish }: PayloadAction<RestaurantDishInBasket>) => {
-      const isAlreadyInBasket: boolean = Boolean(
-        state.order.find(({ dishId }) => dishId === restaurantDish.dishId),
-      );
+      const isAlreadyInBasket: boolean = Boolean(state.order.find(({ id }) => id === restaurantDish.id));
 
       if (isAlreadyInBasket) {
         toast.error(i18n.t('Item already in basket'));
@@ -36,8 +34,8 @@ export const basketSlice = createSlice({
       state.order.push(restaurantDish);
       orderSessionStorage.setValue(state.order);
     },
-    removeOrderDish: (state, { payload }: PayloadAction<Pick<RestaurantDishInBasket, 'dishId'>>) => {
-      const filterDishes = (arr: BasketOrder) => arr.filter(({ dishId }) => !(payload.dishId === dishId));
+    removeOrderDish: (state, { payload }: PayloadAction<RestaurantDishInBasket>) => {
+      const filterDishes = (arr: BasketOrder) => arr.filter(({ id }) => !(payload.id === id));
 
       state.order = filterDishes(state.order);
       orderSessionStorage.setValue(state.order);

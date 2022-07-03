@@ -1,14 +1,27 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { CustomerDetailsWithDeliveryAddress } from 'types';
-import { DeliveryLocationFormFields, CustomerDetailsFormFields } from 'modules';
+import { useAppSelector, useBasketHelper } from 'hooks';
+import { DeliveryLocationFormFields, CustomerDetailsFormFields, RestaurantDishesTable } from 'modules';
 import { Container, MainContent } from 'ui/layout';
-import { Button } from 'ui/form';
+import { H1, H4 } from 'ui/typography';
+import { Button, FormCol } from 'ui/form';
+import { StyledForm, StyledBottomBar } from './Basket.styles';
 import { useHandleOrderSubmit, useRedirectIfBasketIsEmpty } from './hooks';
 
 function Basket(): JSX.Element {
   const { t } = useTranslation();
-  const { handleSubmit, formState, ...formMethods } = useForm<CustomerDetailsWithDeliveryAddress>();
+  const {
+    totalValue: { humanFriendly },
+  } = useBasketHelper();
+  const {
+    customerDetails,
+    basket: { order },
+  } = useAppSelector((state) => state);
+  const { handleSubmit, formState, ...formMethods } = useForm<CustomerDetailsWithDeliveryAddress>({
+    mode: 'onChange',
+    defaultValues: customerDetails,
+  });
   const handleOrderSubmit = useHandleOrderSubmit();
 
   useRedirectIfBasketIsEmpty();
@@ -17,26 +30,40 @@ function Basket(): JSX.Element {
     <Container>
       <MainContent>
         <FormProvider handleSubmit={handleSubmit} formState={formState} {...formMethods}>
-          <form onSubmit={handleSubmit(handleOrderSubmit)}>
-            <CustomerDetailsFormFields
-              names={{
-                firstName: 'firstName',
-                lastName: 'lastName',
-                email: 'email',
-              }}
-            />
-            <DeliveryLocationFormFields
-              names={{
-                addressLine: 'deliveryAddress.addressLine',
-                locality: 'deliveryAddress.locality',
-                postalCode: 'deliveryAddress.postalCode',
-                countryRegion: 'deliveryAddress.countryRegion',
-              }}
-            />
-            <Button type="submit" loading={formState.isSubmitting}>
-              {t('Order and pay')}
-            </Button>
-          </form>
+          <StyledForm onSubmit={handleSubmit(handleOrderSubmit)}>
+            <H1>{t('Your order')}</H1>
+
+            <RestaurantDishesTable dishes={order} />
+
+            <FormCol>
+              <H4 as="h2">{t('Delivery details')}</H4>
+
+              <CustomerDetailsFormFields
+                names={{
+                  firstName: 'firstName',
+                  lastName: 'lastName',
+                  email: 'email',
+                }}
+              />
+            </FormCol>
+            <FormCol>
+              <DeliveryLocationFormFields
+                names={{
+                  addressLine: 'deliveryAddress.addressLine',
+                  locality: 'deliveryAddress.locality',
+                  postalCode: 'deliveryAddress.postalCode',
+                  countryRegion: 'deliveryAddress.countryRegion',
+                }}
+              />
+            </FormCol>
+
+            <StyledBottomBar>
+              <span>{t('To pay: {{amount}}', { amount: humanFriendly })}</span>
+              <Button type="submit" loading={formState.isSubmitting}>
+                {t('Place order')}
+              </Button>
+            </StyledBottomBar>
+          </StyledForm>
         </FormProvider>
       </MainContent>
     </Container>

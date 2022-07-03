@@ -12,8 +12,11 @@ const useBasketController = () => {
   const removeOrderDish = (param: Parameters<typeof actions.removeOrderDish>[0]) =>
     dispatch(actions.removeOrderDish(param));
 
+  const isDishInBasket = (id: string) => Boolean(basket.order.find((dish) => dish.id === id));
+
   return {
     state: basket,
+    isDishInBasket,
     addOrderDish,
     removeOrderDish,
   };
