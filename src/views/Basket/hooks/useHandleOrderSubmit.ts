@@ -7,12 +7,12 @@ import { ENVIRONMENTS } from 'config/constants';
 import { actions } from 'store/slices/basket.slice';
 
 const useHandleOrderSubmit = () => {
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const { mutateAsync } = usePostNewOrder();
   const {
     basket: { order },
   } = useAppSelector((state) => state);
-  const { mutateAsync } = usePostNewOrder();
 
   return async (customer: CustomerDetailsWithDeliveryAddress) => {
     try {
@@ -21,7 +21,7 @@ const useHandleOrderSubmit = () => {
     } catch (err) {
       toast.error(t('Something went wrong... Please try again later'));
       if (process.env.NODE_ENV !== ENVIRONMENTS.PRODUCTION) {
-        console.log(err);
+        console.error(err);
       }
     } finally {
       dispatch(actions.clearBasket());
