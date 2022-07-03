@@ -21,15 +21,15 @@ function DeliveryLocationFormFields({ names }: DeliveryLocationFormFieldsProps):
   return (
     <>
       {[
-        { label: t('Address line'), name: names.addressLine },
-        { label: t('City/Town'), name: names.locality },
-        { label: t('Post code'), name: names.postalCode },
-        { label: t('Country'), name: names.countryRegion },
-      ].map(({ label, name }) => (
+        { label: t('Address line'), name: names.addressLine, minLength: 5 },
+        { label: t('City/Town'), name: names.locality, minLength: 2 },
+        { label: t('Post code'), name: names.postalCode, minLength: 4 },
+        { label: t('Country'), name: names.countryRegion, minLength: 2 },
+      ].map(({ label, name, minLength }) => (
         <Controller
           key={name}
           name={name}
-          rules={{ required: true }}
+          rules={{ required: true, minLength }}
           render={({ field: { value = '', onChange }, fieldState: { error } }) => (
             <TextField
               label={label}

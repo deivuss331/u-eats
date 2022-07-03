@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Controller } from 'react-hook-form';
 import { TextField } from 'ui/form';
+import { EMAIL_REGEX } from 'config/regex';
 
 interface CustomerDetailsFormFieldsProps {
   names: {
@@ -20,14 +21,14 @@ function CustomerDetailsFormFields({ names }: CustomerDetailsFormFieldsProps): J
   return (
     <>
       {[
-        { label: t('First name'), name: names.firstName },
-        { label: t('Last name'), name: names.lastName },
-        { label: t('E-mail'), name: names.email },
-      ].map(({ label, name }) => (
+        { label: t('First name'), name: names.firstName, minLength: 2 },
+        { label: t('Last name'), name: names.lastName, minLength: 2 },
+        { label: t('E-mail'), name: names.email, pattern: EMAIL_REGEX },
+      ].map(({ label, name, minLength, pattern }) => (
         <Controller
           key={name}
           name={name}
-          rules={{ required: true }}
+          rules={{ required: true, minLength, pattern }}
           render={({ field: { value = '', onChange }, fieldState: { error } }) => (
             <TextField
               label={label}
