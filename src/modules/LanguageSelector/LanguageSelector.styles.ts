@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-import { hideVisually } from 'polished';
 import { ButtonIcon, Select } from 'ui/form';
-
-export const StyledLabel = styled.label`
-  ${hideVisually()}
-`;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
   && {

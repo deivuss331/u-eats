@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Select } from 'ui/form';
-import { StyledButtonIcon, StyledLabel, StyledSelectList } from './LanguageSelector.styles';
+import { SrOnly } from 'ui/typography';
+import { StyledButtonIcon, StyledSelectList } from './LanguageSelector.styles';
 import { useLanguageSelect, useSelectListPosition } from './hooks';
 
 function LanguageSelector(): JSX.Element {
@@ -20,12 +21,12 @@ function LanguageSelector(): JSX.Element {
 
   return (
     <div>
-      <StyledLabel {...getLabelProps()}>{t('Select app language')}</StyledLabel>
-      <div ref={buttonWrapperRef} {...getLabelProps()}>
+      <label ref={buttonWrapperRef} {...getLabelProps()}>
+        <SrOnly>{t('Select app language')}</SrOnly>
         <StyledButtonIcon type="button" variant="text" {...getToggleButtonProps()}>
           <LanguageIcon />
         </StyledButtonIcon>
-      </div>
+      </label>
       <div ref={listWrapperRef} style={styles.popper} {...attributes.popper}>
         <StyledSelectList $isOpen={isOpen} {...getMenuProps()}>
           {languages.map((lang, index) => {

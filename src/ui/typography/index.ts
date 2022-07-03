@@ -10,3 +10,4 @@ export { default as H5 } from './H5';
 export { default as H6 } from './H6';
 
 export { default as FormattedPrice } from './FormattedPrice';
+export { default as SrOnly } from './SrOnly';
