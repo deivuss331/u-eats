@@ -4,10 +4,12 @@ import { ScrollTopOnPathChange } from 'ui/helpers';
 import { ScreenSizeLoader } from 'ui/layout';
 import { APP_HOMEPAGE } from 'config/constants';
 import routes, { appPaths } from 'routes';
-import { usePrepareApp } from 'hooks';
+import { usePrepareApp, useHtmlLangSetter } from 'hooks';
 
 function App(): JSX.Element {
   const isAppPrepared = usePrepareApp();
+
+  useHtmlLangSetter();
 
   if (!isAppPrepared) {
     return <ScreenSizeLoader />;
