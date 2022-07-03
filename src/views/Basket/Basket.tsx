@@ -9,7 +9,7 @@ import { Button, FormCol } from 'ui/form';
 import { StyledForm, StyledBottomBar } from './Basket.styles';
 import { useHandleOrderSubmit, useRedirectIfBasketIsEmpty } from './hooks';
 
-function Basket(): JSX.Element {
+function Basket(): JSX.Element | null {
   const { t } = useTranslation();
   const {
     totalValue: { humanFriendly },
@@ -25,6 +25,10 @@ function Basket(): JSX.Element {
   const handleOrderSubmit = useHandleOrderSubmit();
 
   useRedirectIfBasketIsEmpty();
+
+  if (!order.length) {
+    return null;
+  }
 
   return (
     <Container>
