@@ -20,6 +20,11 @@ export const StyledContainer = styled(Container)`
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.space[4]};
+
+  @media (max-width: 390px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const StyledHeadline = styled(H6)`
