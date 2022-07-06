@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 import config from 'config';
 import { locationsApiClient } from 'services';
 import type { BingLocations } from 'types';
+import { useQueryClientAbort } from 'hooks';
 
 interface Props {
   query: string;
@@ -21,10 +22,12 @@ const useGetLocationsByQuery = ({ query, enabled = true }: Props): ReturnProps =
     isLoading,
     isError,
     isPreviousData,
-  } = useQuery(reqUrl, () => locationsApiClient.get<BingLocations>(reqUrl), {
+  } = useQuery(reqUrl, ({ signal }) => locationsApiClient.get<BingLocations>(reqUrl, { signal }), {
     enabled: enabled && Boolean(query),
     keepPreviousData: true,
   });
+
+  useQueryClientAbort(reqUrl);
 
   return {
     data: isPreviousData ? undefined : data,
