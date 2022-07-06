@@ -1,16 +1,14 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CellValue, Column, Row } from 'react-table';
-import type { RestaurantDish, RestaurantDishInBasket } from 'types';
+import type { RestaurantDish } from 'types';
 import { RestaurantDishTypes } from 'config/constants';
-import { useBasketController } from 'hooks';
 import { dishTypesTranslated } from 'i18n/misc';
-import { Button } from 'ui/form';
 import { FormattedPrice, H6 } from 'ui/typography';
+import { DishBasketButton } from 'modules/RestaurantDishesTable/components';
 
 const useDishesTableColumns = () => {
   const { t } = useTranslation();
-  const { state, addOrderDish, removeOrderDish, isDishInBasket } = useBasketController();
   const columns = useMemo<Column<RestaurantDish>[]>(
     () => [
       {
@@ -33,26 +31,12 @@ const useDishesTableColumns = () => {
       {
         Header: '',
         accessor: 'id',
-        Cell: ({
-          value: id,
-          row: { original: dishData },
-        }: {
-          value: CellValue<string>;
-          row: Row<RestaurantDish>;
-        }) => {
-          const dishInBasketData: RestaurantDishInBasket = { quantity: 1, ...dishData };
-
-          return isDishInBasket(id) ? (
-            <Button onClick={() => removeOrderDish(dishInBasketData)}>{t('Remove from basket')}</Button>
-          ) : (
-            <Button onClick={() => addOrderDish(dishInBasketData)} variant="outlined">
-              {t('Add to basket')}
-            </Button>
-          );
-        },
+        Cell: ({ row: { original: dishData } }: { row: Row<RestaurantDish> }) => (
+          <DishBasketButton quantity={1} {...dishData} />
+        ),
       },
     ],
-    [state.order],
+    [],
   );
 
   return columns;
