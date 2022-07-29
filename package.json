@@ -55,7 +55,8 @@
     "lint:fix": "eslint --no-error-on-unmatched-pattern --fix src/**/*.{js,jsx,ts,tsx}",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test": "cross-env REACT_APP_CONFIG=TEST react-scripts test --watchAll=false"
   },
   "eslintConfig": {
     "extends": [
@@ -111,5 +112,10 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
   }
 }
