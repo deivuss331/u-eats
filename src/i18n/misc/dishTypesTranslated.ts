@@ -1,6 +1,7 @@
 import { RestaurantDishTypes } from 'config/constants';
 import i18n from 'i18n';
 
+// TODO fix: values are not re-translated on language change
 const translated: Record<RestaurantDishTypes, string> = {
   [RestaurantDishTypes.BURGER]: i18n.t('Burger'),
   [RestaurantDishTypes.SOUP]: i18n.t('Soup'),
