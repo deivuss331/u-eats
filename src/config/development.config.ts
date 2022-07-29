@@ -1,18 +1,19 @@
 import type { AppConfig } from 'types';
+import { getBaseUrlEndPoint } from 'utils';
 
-const BASE_API_URL: string = '/api';
+const BASE_API_URL: string = `${window.location.origin}/api`;
 
-const getBaseApiUrlEndPoint = (endPoint: string) => `${BASE_API_URL}/${endPoint}`;
+const getBaseApiUrlEndPoint = getBaseUrlEndPoint(BASE_API_URL);
 
 const config: AppConfig = {
   api: {
     useMocks: true,
     urls: {
-      getApiAppConfig: () => getBaseApiUrlEndPoint('config'),
+      getApiAppConfig: () => getBaseApiUrlEndPoint('/config'),
       getLocationsByQuery: (q) => `http://dev.virtualearth.net/REST/v1/Locations/${q}`,
-      getRestaurantsByParsedBingLocation: () => getBaseApiUrlEndPoint('restaurants'),
-      getRestaurantData: (id) => getBaseApiUrlEndPoint(`restaurants/${id}`),
-      postNewOrder: () => getBaseApiUrlEndPoint('orders'),
+      getRestaurantsByParsedBingLocation: () => getBaseApiUrlEndPoint('/restaurants'),
+      getRestaurantData: (id) => getBaseApiUrlEndPoint(`/restaurants/${id}`),
+      postNewOrder: () => getBaseApiUrlEndPoint('/orders'),
     },
   },
   reactQuery: {
