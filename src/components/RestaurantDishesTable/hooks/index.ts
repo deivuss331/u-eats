@@ -1,1 +1,1 @@
-export { default as useDishesTableColumns } from './useDishesTableColumns';
+export { default as useDishesTableColumnsFactory } from './useDishesTableColumnsFactory';

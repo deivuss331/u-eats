@@ -1,1 +1,1 @@
-export { default as dishTypesTranslated } from './dishTypesTranslated';
+export { default as getDishTypesTranslated } from './getDishTypesTranslated';
