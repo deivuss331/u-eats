@@ -2,7 +2,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { CustomerDetailsWithDeliveryAddress } from 'types';
 import { useAppSelector, useBasketHelper } from 'hooks';
-import { DeliveryLocationFormFields, CustomerDetailsFormFields, RestaurantDishesTable } from 'modules';
+import { DeliveryLocationFormFields, CustomerDetailsFormFields, RestaurantDishesTable } from 'components';
 import { Container, MainContent } from 'ui/layout';
 import { H1, H4 } from 'ui/typography';
 import { Button, FormCol } from 'ui/form';

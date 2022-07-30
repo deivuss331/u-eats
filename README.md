@@ -12,15 +12,15 @@
 
 * [Features](#features)
 * [Pitfalls](#pitfalls)
-* [Developer notes](#developer-notes)
 * [Env variables](#env-variables)
+* [Developer notes](#developer-notes)
 
 ---
 
 #### Features:
 
 * Autocompleting delivery address using Bing Maps API
-* Multilingual
+* Multilingual app
 * Handling API requests states (loading/error)
 * Restaurant menus as sortable tables
 
@@ -28,9 +28,9 @@
 
 #### Pitfalls:
 
-* There's no real back-end. App works on mocks, so you may find weird things like "Tasty shoes" as restaurant dish name.
-* No payments module included
+* There's no real back-end. App works on mocks, so you may find weird things like "Tasty shoes" as a dish name.
 * Missing order validation (user may order food from UK with delivery to Poland)
+* No payments module included
 
 
 ---

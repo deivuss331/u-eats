@@ -18,7 +18,7 @@ export const SESSION_STORAGE_KEYS = {
   ITEMS_IN_BASKET: '__IIB',
 } as const;
 
-// WeekDays values have to match date-fns days
+// 'WeekDays' values have to match date-fns days
 // https://date-fns.org/v2.28.0/docs/getDay
 export enum WeekDays {
   SUNDAY,

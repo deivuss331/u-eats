@@ -1,10 +1,10 @@
 import { usePageableSearchParams } from 'hooks';
-import type { PageableResponse, RestaurantBriefData } from 'types';
-import { RestaurantsList, RestaurantsFilters } from 'modules';
+import type { ApiPageableResponse, ApiRestaurantBriefDataResponse } from 'types';
+import { RestaurantsList, RestaurantsFilters } from 'components';
 import { Container, MainContent } from 'ui/layout';
 import { StyledPagination, StyledContentGrid, StyledFiltersWrapper } from './BrowseRestaurants.styles';
 
-type BrowseRestaurantsProps = PageableResponse<RestaurantBriefData>;
+type BrowseRestaurantsProps = ApiPageableResponse<ApiRestaurantBriefDataResponse>;
 
 function BrowseRestaurants({ content, totalPages }: BrowseRestaurantsProps): JSX.Element {
   const { page, setPage } = usePageableSearchParams();

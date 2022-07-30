@@ -1,6 +1,6 @@
 import { Container, MainContent } from 'ui/layout';
-import { RestaurantsFiltersSkeleton } from 'modules/RestaurantsFilters';
-import { RestaurantsListSkeleton } from 'modules/RestaurantsList';
+import { RestaurantsFiltersSkeleton } from 'components/RestaurantsFilters';
+import { RestaurantsListSkeleton } from 'components/RestaurantsList';
 import { StyledContentGrid, StyledFiltersWrapper } from './BrowseRestaurants.styles';
 
 function BrowseRestaurantsSkeleton(): JSX.Element {

@@ -1,10 +1,10 @@
-import type { Pageable, PageableResponse } from 'types';
+import type { ApiPageRequest, ApiPageableResponse } from 'types';
 
-interface IProps<T> extends Pageable {
+interface GetPageableResponseProps<T> extends ApiPageRequest {
   content: T[];
 }
 
-export default <T>({ page, size, content }: IProps<T>): PageableResponse<T> => {
+export default <T>({ page, size, content }: GetPageableResponseProps<T>): ApiPageableResponse<T> => {
   const totalItems: number = content.length;
   const isValidPage: boolean = page * size <= totalItems;
   const totalPages: number = Math.ceil(totalItems / size);

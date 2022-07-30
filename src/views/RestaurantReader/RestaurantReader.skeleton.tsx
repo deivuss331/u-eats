@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import { Container, MainContent } from 'ui/layout';
-import { RestaurantDishesTableSkeleton } from 'modules/RestaurantDishesTable';
+import { RestaurantDishesTableSkeleton } from 'components/RestaurantDishesTable';
 import {
   StyledHeroImage,
   StyledHeroWrapper,
