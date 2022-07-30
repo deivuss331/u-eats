@@ -13,5 +13,6 @@ locationsApiClient.interceptors.request.use((config) => {
 
   return config;
 });
+/* eslint-enable */
 
 export default locationsApiClient;

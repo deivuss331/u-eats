@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { DeliveryCityForm } from 'modules';
+import { DeliveryCityForm } from 'components';
 import { StyledWrapper, StyledHeroImage, StyledHeroContainer, StyledMain, StyledH1 } from './Homepage.styles';
 
 function Homepage(): JSX.Element {

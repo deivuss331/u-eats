@@ -34,7 +34,7 @@ export interface ComponentCommonProps {
   id?: string;
 }
 
-export type DeliveryAddressFormPayload = Required<NonNullable<ParsedBingLocation>>;
+export type DeliveryAddressFormPayload = Required<NonNullable<ApiParsedBingLocation>>;
 
 export interface CustomerDetailsFormPayload {
   firstName: string;
@@ -53,7 +53,7 @@ export interface RestaurantsFiltersFormPayload {
   priceRange?: RestaurantPriceRange;
 }
 
-export interface RestaurantDishInBasket extends RestaurantDish {
+export interface RestaurantDishInBasket extends ApiRestaurantDishResponse {
   quantity: number;
 }
 
@@ -61,14 +61,16 @@ export interface RestaurantDishInBasket extends RestaurantDish {
  * Api types
  */
 
-export interface Pageable {
+export type ApiPageRequest = ApiPageResponse;
+
+export interface ApiPageResponse {
   page: number;
   size: number;
 }
 
-export interface PageableResponse<T> {
+export interface ApiPageableResponse<T> {
   totalPages: number;
-  pageable: Pageable;
+  pageable: ApiPageResponse;
   content: T[];
 }
 
@@ -76,9 +78,9 @@ export interface ApiAppConfig {
   currency: string;
 }
 
-export type BingConfidence = 'High' | 'Medium' | 'Low';
+export type ApiBingConfidence = 'High' | 'Medium' | 'Low';
 
-export interface BingLocations {
+export interface ApiBingLocationsResponse {
   resourceSets: {
     estimatedTotal: number;
     resources: {
@@ -96,19 +98,22 @@ export interface BingLocations {
         locality?: string;
         postalCode?: string;
       };
-      confidence: BingConfidence;
+      confidence: ApiBingConfidence;
     }[];
   }[];
 }
 
-export interface ParsedBingLocation {
+export interface ApiParsedBingLocation {
   addressLine?: string;
   countryRegion?: string;
   locality?: string;
   postalCode?: string;
 }
 
-export type FilteredParsedBingLocation = RequiredExceptFor<ParsedBingLocation, 'addressLine' | 'postalCode'>;
+export type ApiFilteredParsedBingLocation = RequiredExceptFor<
+  ApiParsedBingLocation,
+  'addressLine' | 'postalCode'
+>;
 
 export type ApiPrice = number;
 
@@ -119,32 +124,32 @@ export interface ApiHours {
   milliseconds: number;
 }
 
-export interface RestaurantBriefData {
-  id: RestaurantData['id'];
-  name: RestaurantData['name'];
-  coverImg: RestaurantData['coverImg'];
-  priceRange: RestaurantData['priceRange'];
-  slug: RestaurantData['slug'];
+export interface ApiRestaurantBriefDataResponse {
+  id: ApiRestaurantDataResponse['id'];
+  name: ApiRestaurantDataResponse['name'];
+  coverImg: ApiRestaurantDataResponse['coverImg'];
+  priceRange: ApiRestaurantDataResponse['priceRange'];
+  slug: ApiRestaurantDataResponse['slug'];
   address: {
-    countryRegion: RestaurantData['address']['countryRegion'];
-    locality: RestaurantData['address']['locality'];
+    countryRegion: ApiRestaurantDataResponse['address']['countryRegion'];
+    locality: ApiRestaurantDataResponse['address']['locality'];
   };
   reviews: {
-    avg: RestaurantData['reviews']['avg'];
+    avg: ApiRestaurantDataResponse['reviews']['avg'];
   };
   delivery: {
-    fee: RestaurantData['delivery']['fee'];
-    durationInMinutes: RestaurantData['delivery']['durationInMinutes'];
+    fee: ApiRestaurantDataResponse['delivery']['fee'];
+    durationInMinutes: ApiRestaurantDataResponse['delivery']['durationInMinutes'];
   };
 }
 
-export interface RestaurantData {
+export interface ApiRestaurantDataResponse {
   id: string;
   name: string;
   coverImg: string;
   priceRange: RestaurantPriceRange;
   slug: string;
-  address: Required<NonNullable<ParsedBingLocation>>;
+  address: Required<NonNullable<ApiParsedBingLocation>>;
   reviews: {
     avg: number;
   };
@@ -162,17 +167,17 @@ export interface RestaurantData {
       to: ApiHours;
     };
   };
-  menu: RestaurantDish[];
+  menu: ApiRestaurantDishResponse[];
 }
 
-export interface RestaurantDish {
+export interface ApiRestaurantDishResponse {
   id: string;
   name: string;
   type: RestaurantDishTypes;
   pricePerItem: ApiPrice;
 }
 
-export interface NewOrder {
+export interface ApiNewOrderRequest {
   order: RestaurantDishInBasket[];
   customer: CustomerDetailsWithDeliveryAddress;
 }

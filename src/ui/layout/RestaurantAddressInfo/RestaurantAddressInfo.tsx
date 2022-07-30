@@ -1,10 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import type { RestaurantData } from 'types';
+import type { ApiRestaurantDataResponse } from 'types';
 import { StyledWrapper, StyledMapIcon } from './RestaurantAddressInfo.styles';
 
-type Props = RestaurantData['address'];
+type RestaurantAddressInfoProps = ApiRestaurantDataResponse['address'];
 
-function RestaurantAddressInfo({ locality, addressLine, countryRegion }: Props): JSX.Element {
+function RestaurantAddressInfo({
+  locality,
+  addressLine,
+  countryRegion,
+}: RestaurantAddressInfoProps): JSX.Element {
   const { t } = useTranslation();
 
   return (

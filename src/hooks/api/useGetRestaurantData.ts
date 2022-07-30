@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import config from 'config';
 import { apiClient } from 'services';
-import type { RestaurantData } from 'types';
+import type { ApiRestaurantDataResponse } from 'types';
 
 interface Props {
   id: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 interface ReturnProps {
-  data?: RestaurantData;
+  data?: ApiRestaurantDataResponse;
   isLoading: boolean;
   isError: boolean;
 }
@@ -22,7 +22,7 @@ const useGetRestaurantData = ({ id, enabled = true }: Props): ReturnProps => {
     isLoading,
     isError,
     isPreviousData,
-  } = useQuery([reqUrl, id], () => apiClient.get<RestaurantData>(reqUrl), {
+  } = useQuery([reqUrl, id], () => apiClient.get<ApiRestaurantDataResponse>(reqUrl), {
     enabled: Boolean(id) && enabled,
     keepPreviousData: true,
   });

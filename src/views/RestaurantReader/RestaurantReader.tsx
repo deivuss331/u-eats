@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import type { RestaurantData } from 'types';
-import { RestaurantDishesTable } from 'modules';
+import type { ApiRestaurantDataResponse } from 'types';
+import { RestaurantDishesTable } from 'components';
 import {
   MainContent,
   Container,
@@ -17,7 +17,7 @@ import {
   StyledInlineAnnotationsList,
 } from './RestaurantReader.styles';
 
-type RestaurantReaderProps = RestaurantData;
+type RestaurantReaderProps = ApiRestaurantDataResponse;
 
 function RestaurantReader({
   coverImg,

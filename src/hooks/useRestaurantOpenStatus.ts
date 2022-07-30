@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getDay, set, isBefore, isAfter } from 'date-fns';
 import { WeekDays } from 'config/constants';
-import type { RestaurantData } from 'types';
+import type { ApiRestaurantDataResponse } from 'types';
 
 const MILLISECONDS_IN_SECOND: number = 1000;
 const SECONDS_IN_MINUTE: number = 60;
 
-const useRestaurantOpenStatus = ({ days, hours }: RestaurantData['opens']): boolean => {
+const useRestaurantOpenStatus = ({ days, hours }: ApiRestaurantDataResponse['opens']): boolean => {
   const [nowDate, setNowDate] = useState<Date>(new Date());
   const todayDay: WeekDays = getDay(nowDate);
   const isTodayOpen: boolean = days[todayDay];

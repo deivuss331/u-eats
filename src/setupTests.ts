@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import config from 'config';
 
 if (config.api.useMocks) {
-  require('./mocks/server').default.start({
+  require('./mocks/server').default.listen({
     onUnhandledRequest: 'bypass', // Hide warnings about unhandled (by MSW) requests
   });
 }

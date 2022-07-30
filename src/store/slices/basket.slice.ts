@@ -35,9 +35,9 @@ export const basketSlice = createSlice({
       orderSessionStorage.setValue(state.order);
     },
     removeOrderDish: (state, { payload }: PayloadAction<RestaurantDishInBasket>) => {
-      const filterDishes = (arr: BasketOrder) => arr.filter(({ id }) => !(payload.id === id));
+      const filteredDishes = (arr: BasketOrder) => arr.filter(({ id }) => !(payload.id === id));
 
-      state.order = filterDishes(state.order);
+      state.order = filteredDishes(state.order);
       orderSessionStorage.setValue(state.order);
     },
     clearBasket: (state) => {

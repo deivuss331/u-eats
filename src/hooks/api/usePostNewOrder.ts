@@ -1,11 +1,11 @@
 import { useMutation } from 'react-query';
 import config from 'config';
 import { apiClient } from 'services';
-import type { NewOrder } from 'types';
+import type { ApiNewOrderRequest } from 'types';
 
 const usePostNewOrder = () => {
-  const { mutate, mutateAsync, isLoading, isError } = useMutation((payload: NewOrder) =>
-    apiClient.post<NewOrder>(config.api.urls.postNewOrder(), payload),
+  const { mutate, mutateAsync, isLoading, isError } = useMutation((payload: ApiNewOrderRequest) =>
+    apiClient.post<ApiNewOrderRequest>(config.api.urls.postNewOrder(), payload),
   );
 
   return {

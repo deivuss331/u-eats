@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Header, Footer, BasketOverviewBottomBar } from 'modules';
+import { PageHeader, PageFooter, BasketOverviewBottomBar } from 'components';
 import { ScrollTopOnPathChange } from 'ui/helpers';
 import { ScreenSizeLoader } from 'ui/layout';
 import { APP_HOMEPAGE } from 'config/constants';
@@ -18,7 +18,7 @@ function App(): JSX.Element {
   return (
     <Router basename={APP_HOMEPAGE}>
       <ScrollTopOnPathChange />
-      <Header />
+      <PageHeader />
       <Routes>
         {routes.map(({ path, ...route }) => (
           <Route key={path} path={path} element={<route.component />} />
@@ -26,7 +26,7 @@ function App(): JSX.Element {
         <Route path="*" element={<Navigate to={appPaths.root()} />} />
       </Routes>
       <BasketOverviewBottomBar />
-      <Footer />
+      <PageFooter />
     </Router>
   );
 }

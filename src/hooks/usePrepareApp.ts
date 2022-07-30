@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useGetApiAppConfig } from 'hooks/api';
-import { actions } from 'store/slices/global.slice';
+import { actions } from 'store/slices/app.slice';
 import useAppDispatch from './useAppDispatch';
 
 const usePrepareApp = (): boolean => {
