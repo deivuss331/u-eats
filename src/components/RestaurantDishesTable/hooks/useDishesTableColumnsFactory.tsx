@@ -3,13 +3,15 @@ import { useTranslation } from 'react-i18next';
 import type { CellValue, Column, Row } from 'react-table';
 import type { ApiRestaurantDishResponse } from 'types';
 import { RestaurantDishTypes } from 'config/constants';
-import { dishTypesTranslated } from 'i18n/misc';
+import { getDishTypesTranslated } from 'i18n/misc';
 import { FormattedPrice, H6 } from 'ui/typography';
 import { DishBasketButton } from 'components/RestaurantDishesTable/components';
 
-const useDishesTableColumns = () => {
+const useDishesTableColumnsFactory = () => {
   const { t } = useTranslation();
-  const columns = useMemo<Column<ApiRestaurantDishResponse>[]>(
+  const dishTypesTranslated = getDishTypesTranslated(t);
+
+  return useMemo<Column<ApiRestaurantDishResponse>[]>(
     () => [
       {
         Header: t('Name'),
@@ -34,12 +36,11 @@ const useDishesTableColumns = () => {
         Cell: ({ row: { original: dishData } }: { row: Row<ApiRestaurantDishResponse> }) => (
           <DishBasketButton quantity={1} {...dishData} />
         ),
+        disableSortBy: true,
       },
     ],
     [],
   );
-
-  return columns;
 };
 
-export default useDishesTableColumns;
+export default useDishesTableColumnsFactory;
