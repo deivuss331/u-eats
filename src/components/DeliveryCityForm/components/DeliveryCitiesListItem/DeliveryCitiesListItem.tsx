@@ -24,7 +24,7 @@ function DeliveryCitiesListItem({ location, linkAria = {} }: DeliveryCitiesListI
         onClick={() => dispatch(actions.setDeliveryAddress(location))}
         to={{
           pathname: appPaths.browseRestaurants(),
-          search: queryString.stringify(location),
+          search: queryString.stringify({ ...location, page: 0 }),
         }}
         {...linkAria}
       >
