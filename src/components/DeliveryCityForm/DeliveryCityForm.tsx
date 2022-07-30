@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-hot-toast';
 import queryString from 'query-string';
 import { appPaths } from 'routes';
-import type { FormPayload } from 'modules/DeliveryCityForm/types';
-import { DeliveryCitiesCombobox } from 'modules/DeliveryCityForm/components';
+import type { FormPayload } from 'components/DeliveryCityForm/types';
+import { DeliveryCitiesCombobox } from 'components/DeliveryCityForm/components';
 import { Button } from 'ui/form';
 import { StyledForm } from './DeliveryCityForm.styles';
 

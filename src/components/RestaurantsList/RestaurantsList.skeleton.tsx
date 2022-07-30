@@ -1,4 +1,4 @@
-import { RestaurantCardSkeleton } from 'modules/RestaurantCard';
+import { RestaurantCardSkeleton } from 'components/RestaurantCard';
 import { StyledUl } from './RestaurantsList.styles';
 
 const SKELETON_CARDS_QTY: number = 20;

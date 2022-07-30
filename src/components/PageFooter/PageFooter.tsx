@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { RenderIf } from 'ui/helpers';
 import { UEatsLogo } from 'ui/layout';
-import { StyledContainer, StyledFooter, StyledAppCredentials } from './Footer.styles';
+import { StyledContainer, StyledFooter, StyledAppCredentials } from './PageFooter.styles';
 
-function Footer(): JSX.Element {
+function PageFooter(): JSX.Element {
   const { t } = useTranslation();
 
   const { REACT_APP_VERSION, REACT_APP_AUTHOR_NAME, REACT_APP_AUTHOR_EMAIL } = process.env;
@@ -27,4 +27,4 @@ function Footer(): JSX.Element {
   );
 }
 
-export default Footer;
+export default PageFooter;

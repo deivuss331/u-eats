@@ -5,7 +5,7 @@ import type { ApiRestaurantDishResponse } from 'types';
 import { RestaurantDishTypes } from 'config/constants';
 import { dishTypesTranslated } from 'i18n/misc';
 import { FormattedPrice, H6 } from 'ui/typography';
-import { DishBasketButton } from 'modules/RestaurantDishesTable/components';
+import { DishBasketButton } from 'components/RestaurantDishesTable/components';
 
 const useDishesTableColumns = () => {
   const { t } = useTranslation();

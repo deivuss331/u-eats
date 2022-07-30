@@ -1,5 +1,5 @@
 import type { ApiRestaurantBriefDataResponse, ComponentCommonProps } from 'types';
-import { RestaurantCard } from 'modules';
+import { RestaurantCard } from 'components';
 import { StyledUl } from './RestaurantsList.styles';
 
 interface RestaurantsListProps extends ComponentCommonProps {

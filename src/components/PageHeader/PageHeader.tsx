@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { LanguageSelector } from 'modules';
+import { LanguageSelector } from 'components';
 import { RenderIf } from 'ui/helpers';
-import { StyledHeader, StyledContainer, StyledButtonIcon, StyledUEatsLogo } from './Header.styles';
+import { StyledHeader, StyledContainer, StyledButtonIcon, StyledUEatsLogo } from './PageHeader.styles';
 import { useHasVisibleBackground } from './hooks';
 
-function Header(): JSX.Element {
+function PageHeader(): JSX.Element {
   const { t } = useTranslation();
   const hasVisibleBackground = useHasVisibleBackground();
 
@@ -28,4 +28,4 @@ function Header(): JSX.Element {
   );
 }
 
-export default Header;
+export default PageHeader;

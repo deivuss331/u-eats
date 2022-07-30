@@ -1,6 +1,6 @@
 import { usePageableSearchParams } from 'hooks';
 import type { ApiPageableResponse, ApiRestaurantBriefDataResponse } from 'types';
-import { RestaurantsList, RestaurantsFilters } from 'modules';
+import { RestaurantsList, RestaurantsFilters } from 'components';
 import { Container, MainContent } from 'ui/layout';
 import { StyledPagination, StyledContentGrid, StyledFiltersWrapper } from './BrowseRestaurants.styles';
 

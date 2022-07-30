@@ -1,6 +1,6 @@
 import { useFormContext, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import type { FormPayload } from 'modules/DeliveryCityForm/types';
+import type { FormPayload } from 'components/DeliveryCityForm/types';
 import { RenderIf } from 'ui/helpers';
 import { StyledWrapper, StyledTextField, StyledDeliveryCitiesList } from './DeliveryCitiesCombobox.styles';
 import { useSuggestedCitiesListController } from './hooks';

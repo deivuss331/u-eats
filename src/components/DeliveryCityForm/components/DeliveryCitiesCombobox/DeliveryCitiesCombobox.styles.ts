@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TextField } from 'ui/form';
-import DeliveryCitiesList from 'modules/DeliveryCityForm/components/DeliveryCitiesList';
+import DeliveryCitiesList from 'components/DeliveryCityForm/components/DeliveryCitiesList';
 
 export const StyledWrapper = styled.div`
   position: relative;
