@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/u-eats/static/css/main.b2a3f954.css",
+    "main.js": "/u-eats/static/js/main.92b4d62d.js",
+    "Homepage.js": "/u-eats/static/js/Homepage.54dd8296.chunk.js",
+    "BrowseRestaurants.js": "/u-eats/static/js/BrowseRestaurants.29a426c1.chunk.js",
+    "RestaurantReader.js": "/u-eats/static/js/RestaurantReader.3fdbcf8b.chunk.js",
+    "Basket.js": "/u-eats/static/js/Basket.27bbf4c7.chunk.js",
+    "static/media/tasty-food.webp": "/u-eats/static/media/tasty-food.c60e3ae2d22128e7a384.webp",
+    "static/media/food5.webp": "/u-eats/static/media/food5.bb1e94dee8450580cbf0.webp",
+    "static/media/food9.webp": "/u-eats/static/media/food9.55b6efa93dda488af0ae.webp",
+    "static/media/food7.webp": "/u-eats/static/media/food7.bbb0e01d2466d6e471b5.webp",
+    "static/media/food4.webp": "/u-eats/static/media/food4.c5c7e3b784191eebc5e3.webp",
+    "static/media/food11.webp": "/u-eats/static/media/food11.ae9f2f13cf8518315589.webp",
+    "static/media/food14.webp": "/u-eats/static/media/food14.729554dd371c59ceb526.webp",
+    "static/media/food10.webp": "/u-eats/static/media/food10.4d445f81233627b7fb93.webp",
+    "static/media/food6.webp": "/u-eats/static/media/food6.99a68cb615c246dee143.webp",
+    "static/media/food12.webp": "/u-eats/static/media/food12.abf9bc84806fcad09b01.webp",
+    "static/media/food8.webp": "/u-eats/static/media/food8.38eb7ae1a0cd1d5ca541.webp",
+    "static/media/food2.webp": "/u-eats/static/media/food2.9a6f6826cd3a2a09c64a.webp",
+    "static/media/food13.webp": "/u-eats/static/media/food13.64d7d429d34cd2b6d040.webp",
+    "static/media/food1.webp": "/u-eats/static/media/food1.00955a7ac0a7b2273943.webp",
+    "static/media/food3.webp": "/u-eats/static/media/food3.dd259d495b70dd69eb76.webp",
+    "index.html": "/u-eats/index.html",
+    "main.b2a3f954.css.map": "/u-eats/static/css/main.b2a3f954.css.map",
+    "main.92b4d62d.js.map": "/u-eats/static/js/main.92b4d62d.js.map",
+    "Homepage.54dd8296.chunk.js.map": "/u-eats/static/js/Homepage.54dd8296.chunk.js.map",
+    "BrowseRestaurants.29a426c1.chunk.js.map": "/u-eats/static/js/BrowseRestaurants.29a426c1.chunk.js.map",
+    "RestaurantReader.3fdbcf8b.chunk.js.map": "/u-eats/static/js/RestaurantReader.3fdbcf8b.chunk.js.map",
+    "Basket.27bbf4c7.chunk.js.map": "/u-eats/static/js/Basket.27bbf4c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2a3f954.css",
+    "static/js/main.92b4d62d.js"
+  ]
+}
