@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import { appPaths } from 'routes';
-import type { FilteredParsedBingLocation } from 'types';
+import type { ApiFilteredParsedBingLocation } from 'types';
 import { useAppDispatch } from 'hooks';
 import { actions } from 'store/slices/customerDetails.slice';
 import { TextBase } from 'ui/typography';
@@ -8,7 +8,7 @@ import { StyledLink, StyledTextSm } from './DeliveryCitiesListItem.styles';
 import { getHeadline } from './utils';
 
 interface DeliveryCitiesListItemProps {
-  location: FilteredParsedBingLocation;
+  location: ApiFilteredParsedBingLocation;
   linkAria?: Record<string, string>;
 }
 

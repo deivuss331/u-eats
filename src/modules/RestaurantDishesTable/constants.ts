@@ -1,6 +1,6 @@
-import type { RestaurantDish } from 'types';
+import type { ApiRestaurantDishResponse } from 'types';
 
-export const SORTABLE_COLUMNS: Record<keyof RestaurantDish, boolean> = {
+export const SORTABLE_COLUMNS: Record<keyof ApiRestaurantDishResponse, boolean> = {
   id: false,
   name: true,
   type: true,

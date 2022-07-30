@@ -1,13 +1,13 @@
 import { useId } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { BingLocations, ComponentCommonProps } from 'types';
+import type { ApiBingLocationsResponse, ComponentCommonProps } from 'types';
 import DeliveryCitiesListItem from '../DeliveryCitiesListItem';
 import DeliveryCitiesListSkeleton from './DeliveryCitiesList.skeleton';
 import { StyledWrapper, StyledHeadline } from './DeliveryCitiesList.styles';
 import { parseBingLocations, filterParsedBingLocations } from './utils';
 
 interface DeliveryCitiesListProps extends ComponentCommonProps {
-  data?: BingLocations;
+  data?: ApiBingLocationsResponse;
   isLoading: boolean;
 }
 

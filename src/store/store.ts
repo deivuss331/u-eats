@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import globalReducer from './slices/global.slice';
+import appReducer from './slices/app.slice';
 import customerDetailsReducer from './slices/customerDetails.slice';
 import basketReducer from './slices/basket.slice';
 
 const store = configureStore({
   reducer: {
-    global: globalReducer,
+    app: appReducer,
     customerDetails: customerDetailsReducer,
     basket: basketReducer,
   },

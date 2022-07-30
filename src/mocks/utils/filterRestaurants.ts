@@ -1,23 +1,23 @@
 import { orderBy, intersection } from 'lodash-es';
-import type { RestaurantBriefData, RestaurantsFiltersFormPayload } from 'types';
+import type { ApiRestaurantBriefDataResponse, RestaurantsFiltersFormPayload } from 'types';
 
 export default (
-  restaurants: RestaurantBriefData[],
+  restaurants: ApiRestaurantBriefDataResponse[],
   filters: RestaurantsFiltersFormPayload,
-): RestaurantBriefData[] =>
+): ApiRestaurantBriefDataResponse[] =>
   intersection(...[sortResults, filterByPriceRange].map((sortFn) => sortFn(restaurants, filters)));
 
 function filterByPriceRange(
-  restaurants: RestaurantBriefData[],
+  restaurants: ApiRestaurantBriefDataResponse[],
   { priceRange }: RestaurantsFiltersFormPayload,
-): RestaurantBriefData[] {
+): ApiRestaurantBriefDataResponse[] {
   return priceRange ? restaurants.filter((restaurant) => restaurant.priceRange === priceRange) : restaurants;
 }
 
 function sortResults(
-  restaurants: RestaurantBriefData[],
+  restaurants: ApiRestaurantBriefDataResponse[],
   { sortBy }: RestaurantsFiltersFormPayload,
-): RestaurantBriefData[] {
+): ApiRestaurantBriefDataResponse[] {
   switch (sortBy) {
     case 'reviewsAsc': {
       return orderBy(restaurants, 'reviews.avg', 'asc');

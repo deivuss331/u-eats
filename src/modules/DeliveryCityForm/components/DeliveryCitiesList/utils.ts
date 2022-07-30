@@ -1,9 +1,9 @@
 import { uniqBy } from 'lodash-es';
-import type { BingLocations, ParsedBingLocation, FilteredParsedBingLocation } from 'types';
+import type { ApiBingLocationsResponse, ApiParsedBingLocation, ApiFilteredParsedBingLocation } from 'types';
 
-const FILTERED_LOCATIONS_REQUIRED_FIELD_KEYS: (keyof ParsedBingLocation)[] = ['locality', 'countryRegion'];
+const FILTERED_LOCATIONS_REQUIRED_FIELD_KEYS: (keyof ApiParsedBingLocation)[] = ['locality', 'countryRegion'];
 
-export const parseBingLocations = (bingLocations: BingLocations): ParsedBingLocation[] =>
+export const parseBingLocations = (bingLocations: ApiBingLocationsResponse): ApiParsedBingLocation[] =>
   bingLocations.resourceSets[0].resources.map(
     ({ address: { addressLine, countryRegion, locality, postalCode } }) => ({
       addressLine,
@@ -14,13 +14,13 @@ export const parseBingLocations = (bingLocations: BingLocations): ParsedBingLoca
   );
 
 export const filterParsedBingLocations = (
-  parsedBingLocations: ParsedBingLocation[],
-): FilteredParsedBingLocation[] =>
+  parsedBingLocations: ApiParsedBingLocation[],
+): ApiFilteredParsedBingLocation[] =>
   uniqBy(
     parsedBingLocations.filter((fields) =>
       Object.keys(fields)
-        .filter((key) => FILTERED_LOCATIONS_REQUIRED_FIELD_KEYS.includes(key as keyof ParsedBingLocation))
-        .every((key) => Boolean(fields[key as keyof ParsedBingLocation])),
-    ) as Required<ParsedBingLocation>[],
+        .filter((key) => FILTERED_LOCATIONS_REQUIRED_FIELD_KEYS.includes(key as keyof ApiParsedBingLocation))
+        .every((key) => Boolean(fields[key as keyof ApiParsedBingLocation])),
+    ) as Required<ApiParsedBingLocation>[],
     'locality',
   );

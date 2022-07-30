@@ -4,7 +4,12 @@ import Decimal from 'decimal.js-light';
 import faker from 'mocks/faker-client';
 import { getRestaurantCoverImageUrl, createSlug } from 'mocks/utils';
 import { RestaurantDishTypes, WeekDays } from 'config/constants';
-import type { RestaurantBriefData, RestaurantData, RestaurantDish, ApiPrice } from 'types';
+import type {
+  ApiRestaurantBriefDataResponse,
+  ApiRestaurantDataResponse,
+  ApiRestaurantDishResponse,
+  ApiPrice,
+} from 'types';
 
 const CENTS_IN_DOLLAR: number = 100;
 
@@ -16,7 +21,7 @@ export const getApiPrice = (minInCents: number, maxInCents: number): ApiPrice =>
 const MIN_RESTAURANT_DISH_PRICE_IN_CENTS: number = 10 * CENTS_IN_DOLLAR;
 const MAX_RESTAURANT_DISH_PRICE_IN_CENTS: number = 50 * CENTS_IN_DOLLAR;
 
-export const getRestaurantDish = (): RestaurantDish => ({
+export const getRestaurantDish = (): ApiRestaurantDishResponse => ({
   id: faker.datatype.uuid(),
   name: faker.commerce.productName(),
   type: sample([
@@ -38,7 +43,7 @@ const MAX_DELIVERY_DURATION_IN_MINUTES: number = 30;
 const MIN_AVG_REVIEWS_SCORE: number = 2;
 const MAX_AVG_REVIEWS_SCORE: number = 5;
 
-export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefData => {
+export const getRestaurantBriefData = (queryParams?: string): ApiRestaurantBriefDataResponse => {
   const { countryRegion, locality } = queryString.parse(queryParams || '');
   const name = faker.company.companyName();
 
@@ -71,7 +76,7 @@ export const getRestaurantBriefData = (queryParams?: string): RestaurantBriefDat
 
 const MAX_RESTAURANTS_QTY: number = 100;
 
-export const getRestaurantsBriefData = (queryParams: string): RestaurantBriefData[] =>
+export const getRestaurantsBriefData = (queryParams: string): ApiRestaurantBriefDataResponse[] =>
   new Array(faker.datatype.number(MAX_RESTAURANTS_QTY))
     .fill(null)
     .map(() => getRestaurantBriefData(queryParams));
@@ -82,7 +87,7 @@ const MAX_MENU_POSITIONS_PER_RESTAURANT: number = 50;
 export const getRestaurantDataByBriefData = ({
   address,
   ...briefData
-}: RestaurantBriefData): RestaurantData => ({
+}: ApiRestaurantBriefDataResponse): ApiRestaurantDataResponse => ({
   ...briefData,
   address: {
     ...address,

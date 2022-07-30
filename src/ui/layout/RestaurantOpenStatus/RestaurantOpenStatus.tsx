@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useRestaurantOpenStatus } from 'hooks';
-import type { RestaurantData } from 'types';
+import type { ApiRestaurantDataResponse } from 'types';
 import { StyledWrapper, StyledStatusIcon } from './RestaurantOpenStatus.styles';
 
-type Props = RestaurantData['opens'];
+type Props = ApiRestaurantDataResponse['opens'];
 
 function RestaurantOpenStatus(opensInfo: Props): JSX.Element {
   const { t } = useTranslation();

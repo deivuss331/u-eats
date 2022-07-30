@@ -1,18 +1,18 @@
 import { useSelect } from 'downshift';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { actions } from 'store/slices/global.slice';
+import { actions } from 'store/slices/app.slice';
 import { AppLang } from 'config/constants';
 
 const useLanguageSelect = () => {
   const languages = Object.values(AppLang);
 
   const dispatch = useAppDispatch();
-  const { global } = useAppSelector((state) => state);
+  const { app } = useAppSelector((state) => state);
   const { isOpen, selectedItem, getLabelProps, getToggleButtonProps, getMenuProps, getItemProps } = useSelect(
     {
       items: languages,
       itemToString: (str) => (str ? str.toUpperCase() : ''),
-      defaultSelectedItem: global.lang,
+      defaultSelectedItem: app.lang,
     },
   );
 

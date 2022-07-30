@@ -4,7 +4,7 @@ import type { AppLang } from 'config/constants';
 import type { ApiAppConfig } from 'types';
 import i18n from 'i18n';
 
-interface GlobalState extends Partial<ApiAppConfig> {
+interface AppState extends Partial<ApiAppConfig> {
   lang: AppLang;
   appState: {
     isReady: boolean;
@@ -16,7 +16,7 @@ interface ChangeAppLangActionPayload {
   appLang: AppLang;
 }
 
-const initialState: GlobalState = {
+const initialState: AppState = {
   currency: undefined,
   lang: i18n.language as AppLang,
   appState: {
@@ -25,8 +25,8 @@ const initialState: GlobalState = {
   },
 };
 
-export const globalSlice = createSlice({
-  name: 'global',
+export const appSlice = createSlice({
+  name: 'app',
   initialState,
   reducers: {
     /* eslint-disable no-param-reassign */
@@ -48,5 +48,5 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { actions } = globalSlice;
-export default globalSlice.reducer;
+export const { actions } = appSlice;
+export default appSlice.reducer;

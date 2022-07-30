@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { CellValue, Column, Row } from 'react-table';
-import type { RestaurantDish } from 'types';
+import type { ApiRestaurantDishResponse } from 'types';
 import { RestaurantDishTypes } from 'config/constants';
 import { dishTypesTranslated } from 'i18n/misc';
 import { FormattedPrice, H6 } from 'ui/typography';
@@ -9,7 +9,7 @@ import { DishBasketButton } from 'modules/RestaurantDishesTable/components';
 
 const useDishesTableColumns = () => {
   const { t } = useTranslation();
-  const columns = useMemo<Column<RestaurantDish>[]>(
+  const columns = useMemo<Column<ApiRestaurantDishResponse>[]>(
     () => [
       {
         Header: t('Name'),
@@ -31,7 +31,7 @@ const useDishesTableColumns = () => {
       {
         Header: '',
         accessor: 'id',
-        Cell: ({ row: { original: dishData } }: { row: Row<RestaurantDish> }) => (
+        Cell: ({ row: { original: dishData } }: { row: Row<ApiRestaurantDishResponse> }) => (
           <DishBasketButton quantity={1} {...dishData} />
         ),
       },

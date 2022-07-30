@@ -1,6 +1,6 @@
 import { sample } from 'lodash-es';
 
-const allImages = [
+const coverImages = [
   require('mocks/assets/images/food1.jpg'),
   require('mocks/assets/images/food2.jpg'),
   require('mocks/assets/images/food3.jpg'),
@@ -17,4 +17,4 @@ const allImages = [
   require('mocks/assets/images/food14.jpg'),
 ] as const;
 
-export default (): string => sample(allImages);
+export default (): string => sample(coverImages);

@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { appPaths } from 'routes';
-import type { RestaurantBriefData, ComponentCommonProps } from 'types';
+import type { ApiRestaurantBriefDataResponse, ComponentCommonProps } from 'types';
 import { IconAvgReview } from 'ui/icons';
 import { RestaurantDeliveryInfo } from 'ui/layout';
 import { StyledImage, StyledTextRow, StyledHeadline, StyledLink } from './RestaurantCard.styles';
 
 interface RestaurantCardProps extends ComponentCommonProps {
-  restaurant: RestaurantBriefData;
+  restaurant: ApiRestaurantBriefDataResponse;
 }
 
 function RestaurantCard({

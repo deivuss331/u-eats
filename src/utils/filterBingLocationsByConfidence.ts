@@ -1,9 +1,9 @@
-import type { BingLocations, BingConfidence } from 'types';
+import type { ApiBingLocationsResponse, ApiBingConfidence } from 'types';
 
 export default (
-  data: BingLocations,
-  matchingConfidences: BingConfidence[] | undefined = ['High', 'Medium'],
-): BingLocations => ({
+  data: ApiBingLocationsResponse,
+  matchingConfidences: ApiBingConfidence[] | undefined = ['High', 'Medium'],
+): ApiBingLocationsResponse => ({
   ...data,
   resourceSets:
     data.resourceSets.map(({ resources, ...restProps }) => ({

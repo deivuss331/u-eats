@@ -1,26 +1,28 @@
 import { useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import type { RestaurantDish } from 'types';
+import type { ApiRestaurantDishResponse } from 'types';
 import { useDishesTableColumns } from './hooks';
 import { SORTABLE_COLUMNS } from './constants';
 import { StyledTableWrapper, StyledTable } from './RestaurantDishesTable.styles';
 
 interface RestaurantDishesTableProps {
-  dishes: RestaurantDish[];
+  dishes: ApiRestaurantDishResponse[];
 }
 
 function RestaurantDishesTable({ dishes }: RestaurantDishesTableProps): JSX.Element {
   const data = useMemo(() => dishes, [dishes]);
   const columns = useDishesTableColumns();
-  const { getTableProps, rows, getTableBodyProps, headerGroups, prepareRow } = useTable<RestaurantDish>(
-    {
-      columns,
-      data,
-    },
-    useSortBy,
-  );
+  const { getTableProps, rows, getTableBodyProps, headerGroups, prepareRow } =
+    useTable<ApiRestaurantDishResponse>(
+      {
+        columns,
+        data,
+      },
+      useSortBy,
+    );
 
-  const isSortableColumn = (id: keyof RestaurantDish): boolean => SORTABLE_COLUMNS[id];
+  // TODO
+  const isSortableColumn = (id: keyof ApiRestaurantDishResponse): boolean => SORTABLE_COLUMNS[id];
 
   return (
     <StyledTableWrapper>
@@ -29,7 +31,7 @@ function RestaurantDishesTable({ dishes }: RestaurantDishesTableProps): JSX.Elem
           {headerGroups.map((headerGroup, index) => (
             <tr key={headerGroup.headers[index].id}>
               {headerGroup.headers.map((column) => {
-                const isSortable = isSortableColumn(column.id as keyof RestaurantDish);
+                const isSortable = isSortableColumn(column.id as keyof ApiRestaurantDishResponse);
 
                 return (
                   <th {...column.getHeaderProps(isSortable ? column.getSortByToggleProps() : undefined)}>

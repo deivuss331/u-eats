@@ -1,4 +1,4 @@
-import type { FilteredParsedBingLocation } from 'types';
+import type { ApiFilteredParsedBingLocation } from 'types';
 
-export const getHeadline = ({ locality, addressLine }: FilteredParsedBingLocation): string =>
+export const getHeadline = ({ locality, addressLine }: ApiFilteredParsedBingLocation): string =>
   `${addressLine ? `${addressLine}, ` : ''}${locality}`;

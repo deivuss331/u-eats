@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import type { RestaurantBriefData } from 'types';
+import type { ApiRestaurantBriefDataResponse } from 'types';
 import { getHumanFriendlyPrice } from 'utils/apiPriceUtils';
 import { StyledWrapper, StyledDeliveryDiningIcon } from './RestaurantDeliveryInfo.styles';
 
-type Props = RestaurantBriefData['delivery'];
+type RestaurantDeliveryInfoProps = ApiRestaurantBriefDataResponse['delivery'];
 
-function RestaurantDeliveryInfo({ fee, durationInMinutes }: Props): JSX.Element {
+function RestaurantDeliveryInfo({ fee, durationInMinutes }: RestaurantDeliveryInfoProps): JSX.Element {
   const { t } = useTranslation();
 
   return (

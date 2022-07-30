@@ -1,9 +1,9 @@
-import type { RestaurantBriefData, ComponentCommonProps } from 'types';
+import type { ApiRestaurantBriefDataResponse, ComponentCommonProps } from 'types';
 import { RestaurantCard } from 'modules';
 import { StyledUl } from './RestaurantsList.styles';
 
 interface RestaurantsListProps extends ComponentCommonProps {
-  restaurants: RestaurantBriefData[];
+  restaurants: ApiRestaurantBriefDataResponse[];
 }
 
 function RestaurantsList({ restaurants, ...commonProps }: RestaurantsListProps): JSX.Element {
